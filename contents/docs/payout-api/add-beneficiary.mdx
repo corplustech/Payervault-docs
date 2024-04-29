@@ -1,0 +1,72 @@
+# Add Beneficiary
+
+Use this API to add a beneficiary to your Payervault account by providing the bank account number, IFSC, and other required details. Before you request a transfer, ensure the account has been successfully added as a beneficiary.
+
+## URL
+
+POST    https://paymentgateway.payervault.com/payout-api/addBeneficiary
+
+## Request Body Parameters
+
+### beneId string required
+
+Unique Beneficiary ID to identify the beneficiary. Alphanumeric and underscore (_) allowed (50 character limit)
+
+### name string required
+
+It is the name of the beneficiary. A maximum of 100 characters are allowed. Alphabets, numbers, white spaces ( ), and special characters are allowed.
+
+### email string required
+
+Beneficiaries email, string in email Id format (Ex: [johndoe_1@payervault.com](mailto:johndoe_1@cashfree.com)) - should contain @ and dot (.) - (200 character limit)
+
+phone string required
+
+Beneficiaries phone number, phone number registered in India (only digits, 8 - 12 characters after stripping +91)
+
+### bankAccount string
+
+Beneficiary bank account (9 - 18 alphanumeric character limit)
+
+### ifsc string
+
+Accounts IFSC (standard IFSC format) - length 11, first four bank IFSC and 5th digit 0
+
+### vpa string
+
+Beneficiary VPA, alphanumeric, dot (.), hyphen (-), at sign (@), and underscore () allowed (100 character limit). Note: underscore () and dot (.) gets accepted before and after at sign (@), but hyphen (-) get only accepted before at sign (@)
+
+### address1 string required
+
+Beneficiaries address, alphanumeric and space allowed (but script, HTML tags gets sanitized or removed) (150 character limit)
+
+### address2 string
+
+Beneficiary address, alphanumeric and space allowed (but script, HTML tags gets sanitized or removed) (150 character limit)
+
+### city string
+
+Beneficiary city, only alphabets and white space (50 character limit)
+
+### state string
+
+Beneficiary state, only alphabets and white space (50 character limit)
+
+### pincode string
+
+Beneficiaries pincode, only numbers (6 character limit)
+
+## Headers
+
+<Table>
+        <TableBody>
+            <TableRow>
+                <TableHead>X-Client-Id :</TableHead>
+                <TableCell>YOUR_CLIENT_ID</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableHead>X-Client-Secret :  </TableHead>
+                <TableCell>YOUR_CLIENT_SECRET</TableCell>
+            </TableRow>    
+        </TableBody>
+        </Table>
