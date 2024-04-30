@@ -2,7 +2,7 @@
 import { ROUTES } from "@/lib/routes-config";
 import Anchor from "./anchor";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {Sheet,SheetClose,SheetContent,SheetHeader,SheetTrigger,} from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger, } from "@/components/ui/sheet";
 import { Logo, NAVLINKS } from "./navbar";
 import { Button } from "./ui/button";
 import { AlignLeftIcon } from "lucide-react";
@@ -17,19 +17,46 @@ export function Leftbar() {
             <div className="flex flex-col gap-3 mt-5" key={href}>
               <h4 className="font-extrabold text-sm">{title}</h4>
               <div className="flex flex-col gap-3 text-sm dark:text-neutral-300/85 text-neutral-800 ml-0.5">
+
                 {items.map((subItem) => {
-                  const key = `/docs/${href}${subItem.href}`;
-                  return (
-                    <Anchor
-                      activeClassName="font-medium dark:text-white text-black"
-                      href={key}
-                      key={key}
-                      disabled={subItem.disabled}
-                    >
-                      {subItem.title}
-                    </Anchor>
-                  );
+                  // if not subItem.items then retun this , else return a dropdown link
+                  if (!subItem.items) {
+                    const key = `/docs/${href}${subItem.href}`;
+                    return (
+                      <Anchor
+                        activeClassName="font-medium dark:text-white text-black"
+                        href={key}
+                        key={key}
+                        disabled={subItem.disabled}
+                      >
+                        {subItem.title}
+                      </Anchor>
+                    );
+                  }
+                  else {
+                    return (
+                      <details open>
+                        <summary>{subItem.title}</summary>
+                        {subItem.items.map((subSubItem) => {
+                          const key = `/docs/${href}/${subItem.href}/${subSubItem.href}`
+                          return <div className="flex flex-col">
+                            <Anchor
+                            activeClassName="font-medium dark:text-white text-black"
+                            href={key}
+                            key={key}
+                            disabled={subItem.disabled}
+                            className="m-2 ms-8"
+                          >
+                            {subSubItem.title}
+                          </Anchor>
+                          </div>
+                        })}
+                      </details>
+                    )
+                  }
                 })}
+
+
               </div>
             </div>
           );

@@ -8,7 +8,9 @@ import { cache } from "react";
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 
+// it is a higher order function which takes a function as an argument and returns a function
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
+// its  purpose is to render the page only in case of cashe miss, else server from the cache
 
 // this function generates metadata for the page, i.e the title and description of the page using the params of the url
 export async function generateMetadata({params: { slug = [] },}: {params: { slug: string[] };}) {

@@ -19,6 +19,7 @@ export default function Anchor({
   children,
   ...props
 }: AnchorProps) {
+  // checking the current parh using the usePathname hook and href if are same
   const path = usePathname();
   const isMatch = absolute
     ? props.href.toString().split("/")[1] == path.split("/")[1]
