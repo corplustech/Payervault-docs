@@ -1,0 +1,39 @@
+# Standard Transfer Sync
+
+Use this API to initiate an amount transfer request at Payervault Payments. You need to provide beneficiary ID, amount, and transfer ID. This is a sync transfer request.
+
+Once you trigger the requestTransfer API, the transfer to the beneficiary account will be attempted immediately and the bank's reference number will be returned in the API response. The median time for the response is 2 to 5 seconds.
+
+## URL
+
+<POSTBadge/>    https://paymentgateway.payervault.com/payout-api/requestTransfer
+
+## Body Params
+
+<BodyParams feild="amount" type="double" isRequired={true}/>
+
+amount to be transferred. Decimals allowed (>= 1.00)
+
+<BodyParams feild="beneId" type="string" isRequired={true}/>
+
+Beneficiary Id. Alphanumeric characters allowed.
+
+<BodyParams feild="transferId" type="string" isRequired={true}/>
+
+A unique Id to identify this transfer. Alphanumeric and underscore ( _ ) allowed (40 character limit).
+
+<BodyParams feild="transferMode" type="string" isRequired={false} />
+
+It is the mode of transfer. Allowed values are: banktransfer, phone, neft, imps, rtgs, upi, paytm, and amazonpay. The default transferMode is banktransfer.
+
+<BodyParams feild="remarks" type="string" isRequired={false}/>
+
+Additional remarks, if any. Alphanumeric and white spaces allowed (70 characters limit).
+
+<BodyParams feild="ipAddress" type="string" isRequired={false}/>
+
+IP Address of the caller
+
+## Headers
+
+<IdAndSecTable/>

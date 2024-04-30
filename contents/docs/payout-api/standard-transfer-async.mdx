@@ -1,0 +1,46 @@
+# Standard Transfer Async
+
+Use this API to initiate an amount transfer request at Payervault Payments. You need to provide beneficiary ID, amount, and transfer ID. This is an async transfer request.
+
+Once you trigger the requestAsyncTransfer API, Cashfree Payments verifies your request and returns the Cashfree referenceId. The transfer to beneficiary account will be attempted within the next 60 seconds and you may query the transfer status after 60 seconds.
+
+Use this API to process very high volumes.
+
+**Benefits**:
+
+1. The API response is much faster for the async transfer endpoint. The async transfer response takes < 100 ms as compared to a median value of 2-5 sec for the sync payout transfer API.
+2. The asynchronous API can handle a higher TPM (transactions per minute) as compared to the synchronous API. The async API allows us to handle up to 1000 transactions per minute.
+
+## URL
+
+<POSTBadge/>    https://paymentgateway.payervault.com/payout-api/requestAsyncTransfer
+
+## Body Params
+
+<BodyParams feild="amount" type="double" isRequired={true}/>
+
+amount to be transferred. Decimals allowed (>= 1.00)
+
+<BodyParams feild="beneId" type="string" isRequired={true}/>
+
+Beneficiary Id. Alphanumeric characters allowed.
+
+<BodyParams feild="transferId" type="string" isRequired={true}/>
+
+A unique Id to identify this transfer. Alphanumeric and underscore (_) allowed (40 character limit).
+
+<BodyParams feild="transferMode" type="string" isRequired={false}/>
+
+It is the mode of transfer. Allowed values are: banktransfer, phone, neft, imps, rtgs, upi, paytm, and amazonpay. The default transferMode is banktransfer.
+
+<BodyParams feild="remarks" type="string" isRequired={false}/>
+
+Additional remarks, if any. Alphanumeric and white spaces allowed (70 characters limit).
+
+<BodyParams feild="ipAddress" type="string" isRequired={false}/>
+
+IP Address of the caller
+
+## Headers
+
+<IdAndSecTable/>

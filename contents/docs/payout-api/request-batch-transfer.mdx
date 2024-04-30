@@ -1,0 +1,253 @@
+# Request Batch Transfer
+
+Use this API to initiate transfers to multiple beneficiaries. This API accepts an array of transfer objects under the batch field.
+
+## URL
+
+<POSTBadge/>   https://paymentgateway.payervault.com/payout-api/batchTransfer
+
+<details>
+                <summary> Click here to view details about batch format.</summary>
+                <h2>Batch Format</h2>
+                <table>
+                <thead>
+                    <tr>
+                        <th>Value </th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BENEFICIARY_ID</td>
+                        <td>With this value, beneId and transferMode must be passed in the transfer object within the batch array alphanumeric and underscore allowed (60 character limit) If batchFormat is set to any of the below values, transfers will only be processed via specified mode.</td>
+                    </tr>
+                    <tr>
+                        <td>BANK_ACCOUNT</td>
+                        <td>With this value, Additional details such as bankAccount, ifsc, name, email, phone must be passed in the transfer object within the batch array</td>
+                    </tr>
+                    <tr>
+                        <td>UPI</td>
+                        <td>With this value, Additional details such as vpa, name, email, phone must be passed in the transfer object within the batch array</td>
+                    </tr>
+                    <tr>
+                        <td>PAYTM</td>
+                        <td>With this value, Additional details such as name, email, phone must be passed in the transfer object within the batch array</td>
+                    </tr>
+                    <tr>
+                        <td>AMAZONPAY</td>
+                        <td>With this value, Additional details such as name, email, phone must be passed in the transfer object within the batch array</td>
+                    </tr>
+                </tbody>
+            </table>
+            </details>
+
+    
+    <details>
+                <summary> Click to view the details of transfer objects.</summary>
+                <h2>Transfer Object</h2>
+                <table>
+                <thead>
+                    <tr>
+                        <th>Field Name </th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>transferId</td>
+                        <td>A unique transfer id. </td>
+                    </tr>
+                    <tr>
+                        <td>amount</td>
+                        <td>Amount to be transferred. </td>
+                    </tr>
+                    <tr>
+                        <td>beneId</td>
+                        <td>The ID of the beneficiary. This field must be passed if the batch format option is BENEFICIARY_ID. </td>
+                    </tr>
+                    <tr>
+                        <td>transferMode</td>
+                        <td>Required only when batchFormat is set to BENEFICIARY_ID, mode of transfer for each transfer in batch needs to be set. Allowed values are: banktransfer, upi, paytm, and amazonpay  </td>
+                    </tr>
+                    <tr>
+                        <td>bankAccount</td>
+                        <td>Bank account number for payout. This field must be passed if the batch format option is BANK_ACCOUNT. </td>
+                    </tr>
+                    <tr>
+                        <td>ifsc</td>
+                        <td>IFSC of the corresponding bank account. This field must be passed if the batch format option is BANK_ACCOUNT. </td>
+                    </tr>
+                    <tr>
+                        <td>vpa (optional)</td>
+                        <td> VPA of the corresponding user. This field must be passed if the batch format option is UPI. </td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>Name of the account holder. This field must be passed if the batch format option is BANK_ACCOUNT. </td>
+                    </tr>
+                    <tr>
+                        <td>email (optional)</td>
+                        <td> Email of the beneficiary. This field must be passed if the batch format option is BANK_ACCOUNT. </td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td>The phone of the beneficiary. This field must be passed if the batch format option is BANK_ACCOUNT/PAYTM/AMAZONPAY. </td>
+                    </tr>
+                    <tr>
+                        <td>remarks (optional)</td>
+                        <td> Remarks, if any. </td>
+                    </tr>
+                </tbody>
+            </table>
+            </details>
+
+## Body Params
+
+<BodyParams feild="batchTransferId" type="string" isRequired={true}/>
+
+Unique Id of the Batch Transfer, alphanumeric and underscore allowed (60 character limit)
+
+<BodyParams feild="batchFormat" type="string" isRequired={true}/>
+
+Format of the batch transfers, valid values are, BENEFICIARY_ID, BANK_ACCOUNT, UPI, PAYTM, AMAZONPAY.
+
+<BodyParams feild="deleteBene" type="integer" isRequired={false}/>
+
+Flag to delete and read new beneficiaries if a beneficiary with the same Beneficiary Id is available. When the batch transfer format is BANK_ACCOUNT
+
+<BodyParams feild="batch" type="array of objects" isRequired={true}/>
+An array of transfer objects. 
+
+ <details>
+                <summary>Click here to see the object feilds.</summary>
+                <table>
+                    <thead className="text-left">
+                        <tr>
+                            <th>transferId <TypeBadge type="string"/> <RequiredBadge/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A unique ID to identify this transfer. Alphanumeric, hyphen and underscore (_) allowed (40 character limit).</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>amount  <TypeBadge type="double"/> <RequiredBadge/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Amount to be transferred. Number (&gt;=1)</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>remarks <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Any remarks if required.</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>name <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beneficiary Id. Alphanumeric characters allowed.</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>email <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>It is the name of the beneficiary. A maximum of 100 characters are allowed.</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>phone <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beneficiary email address, string in email Id format (Ex: johndoe_1@payervault.com) - should contain @ and dot (.) - (200 character limit)</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>amount  <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beneficiary phone number, phone number registered in India (only digits, 8 - 12 characters after stripping +91)</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>bankAccount <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beneficiary bank account (9 - 18 alphanumeric character limit) </td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>ifsc <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Accounts IFSC (standard IFSC format) - length 11, first four bank IFSC and 5th digit 0.</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>vpa <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Beneficiary VPA, alphanumeric, dot (.), hyphen (-), at sign (@), and underscore () allowed (100 character limit). Note: underscore () and dot (.) gets accepted before and after at sign (@), but hyphen (-) get only accepted before at sign (@)</td>
+                        </tr>
+                    </tbody>
+
+                    <thead className="text-left">
+                        <tr>
+                            <th>transferMode <TypeBadge type="string"/> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>It is the mode of transfer. Allowed values are: banktransfer, neft, imps, rtgs, upi, paytm, and amazonpay. The default transferMode is banktransfer.</td>
+                        </tr>
+                    </tbody>
+            </table>
+</details>
+
+## Headers
+
+<IdAndSecTable/>  
+
+## Response
+
+- 🟢 200 (OK)

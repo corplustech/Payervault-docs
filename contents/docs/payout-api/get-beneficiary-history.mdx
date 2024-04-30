@@ -1,13 +1,14 @@
-# Get Beneficiary Details
-Use this API to get the details of a particular beneficiary in your account.
+# Get Beneficiary History
+
+Use this API to fetch the transaction history for a particular beneficiary and for a desired period of time.
 
 ## URL
 
-<GETBadge/>   https://paymentgateway.payervault.com/payout-api/getBeneficiary/{beneId}
+<GETBadge/> https://paymentgateway.payervault.com/payout-api/beneHistory?beneId={beneId}
 
 Replace &#123;beneId&#125; with the unique beneId of the beneficiary.
 
-## PATH PARAMS
+## Query Params
 
 <BodyParams feild="beneId" type="string" isRequired={true}/>
 

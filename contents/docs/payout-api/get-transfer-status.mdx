@@ -1,0 +1,66 @@
+# Get Transfer Status
+
+Use this API to get details of a particular transfer. You can pass referenceId or transferId to fetch the details.
+
+## URL
+
+<GETBadge/>   https://paymentgateway.payervault.com/payout-api/transferStatus
+
+ <details>
+    <summary> Click here to see the list of possible transfer statuses returned by Payervault.</summary>
+    <table>
+        <thead className="whitespace-nowrap">
+            <tr>
+                <th>Transfer Status</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SUCCESS</td>
+                <td>Transfer completed successfully. Acknowledged flag in the response tells whether the beneficiary bank has provided acknowledgement of the transfer request.</td>
+            </tr>
+            <tr>
+                <td>ERROR</td>
+                <td>There was an error while requesting the transfer. See sub status code received for more details on why the error occurred. Example: Wrong IFSC.</td>
+            </tr>
+            <tr>
+                <td>FAILED</td>
+                <td>The transfer has failed.</td>
+            </tr>
+            <tr>
+                <td>PENDING</td>
+                <td>The request is getting processed. Query transfer status (/getTransferStatus) after some time to see whether the request was successful/failed.</td>
+            </tr>
+            <tr>
+                <td>REVERSED</td>
+                <td>Transfer rejected by the beneficiary bank. The payout balance gets credited back with the amount charged. Note: You don't receive this when you are attempting a transfer but might see this when querying for transfer status (after a couple of hours). Configure the webhook endpoint to be notified in such cases.</td>
+            </tr>
+        </tbody>
+    </table>
+</details>  
+
+## QUERY PARAMS
+
+(Either **referenceId** or **transferId** is mandatory)
+<BodyParams feild="referenceId" type="string" isRequired={false}/>
+
+Reference ID of the transaction. 
+
+Example : 
+```
+ __URL__/transferStatus?referenceId=CFTR_123456 
+```
+
+<BodyParams feild="transferId" type="string" isRequired={false}/>
+
+Transfer ID of the transaction.
+
+Example : 
+```
+ __URL__/transferStatus?transferId=TPXE_123456 
+```
+
+## Headers
+
+<IdAndSecTable/>

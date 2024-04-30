@@ -4,69 +4,58 @@ Use this API to add a beneficiary to your Payervault account by providing the ba
 
 ## URL
 
-POST    https://paymentgateway.payervault.com/payout-api/addBeneficiary
+<POSTBadge/>    https://paymentgateway.payervault.com/payout-api/addBeneficiary
 
 ## Request Body Parameters
 
-### beneId string required
+<BodyParams feild="beneId" type="string" isRequired={true}/>
 
-Unique Beneficiary ID to identify the beneficiary. Alphanumeric and underscore (_) allowed (50 character limit)
+Unique Beneficiary ID to identify the beneficiary. Alphanumeric and underscore ( _ ) allowed (50 character limit)
 
-### name string required
+<BodyParams feild="name" type="string" isRequired={true}/>
 
 It is the name of the beneficiary. A maximum of 100 characters are allowed. Alphabets, numbers, white spaces ( ), and special characters are allowed.
 
-### email string required
+<BodyParams feild="email" type="string" isRequired={true}/>
 
 Beneficiaries email, string in email Id format (Ex: [johndoe_1@payervault.com](mailto:johndoe_1@cashfree.com)) - should contain @ and dot (.) - (200 character limit)
 
-phone string required
+<BodyParams feild="phone" type="string" isRequired={true}/>
 
 Beneficiaries phone number, phone number registered in India (only digits, 8 - 12 characters after stripping +91)
 
-### bankAccount string
+<BodyParams feild="bankAccount" type="string" isRequired={false}/>
 
 Beneficiary bank account (9 - 18 alphanumeric character limit)
 
-### ifsc string
+<BodyParams feild="ifsc" type="string" isRequired={false}/>
 
 Accounts IFSC (standard IFSC format) - length 11, first four bank IFSC and 5th digit 0
 
-### vpa string
+<BodyParams feild="vpa" type="string" isRequired={false}/>
 
 Beneficiary VPA, alphanumeric, dot (.), hyphen (-), at sign (@), and underscore () allowed (100 character limit). Note: underscore () and dot (.) gets accepted before and after at sign (@), but hyphen (-) get only accepted before at sign (@)
 
-### address1 string required
+<BodyParams feild="address1" type="string" isRequired={true}/>
 
 Beneficiaries address, alphanumeric and space allowed (but script, HTML tags gets sanitized or removed) (150 character limit)
 
-### address2 string
+<BodyParams feild="address2" type="string" isRequired={false}/>
 
 Beneficiary address, alphanumeric and space allowed (but script, HTML tags gets sanitized or removed) (150 character limit)
 
-### city string
+<BodyParams feild="city" type="string" isRequired={false}/>
 
 Beneficiary city, only alphabets and white space (50 character limit)
 
-### state string
+<BodyParams feild="state" type="string" isRequired={false}/>
 
 Beneficiary state, only alphabets and white space (50 character limit)
 
-### pincode string
+<BodyParams feild="pincode" type="string" isRequired={false}/>
 
 Beneficiaries pincode, only numbers (6 character limit)
 
 ## Headers
 
-<Table>
-        <TableBody>
-            <TableRow>
-                <TableHead>X-Client-Id :</TableHead>
-                <TableCell>YOUR_CLIENT_ID</TableCell>
-            </TableRow>
-            <TableRow>
-                <TableHead>X-Client-Secret :  </TableHead>
-                <TableCell>YOUR_CLIENT_SECRET</TableCell>
-            </TableRow>    
-        </TableBody>
-        </Table>
+<IdAndSecTable/>

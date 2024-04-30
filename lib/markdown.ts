@@ -27,6 +27,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import {
+  IdAndSecTable,
+  BodyParams,
+} from "@/components/myComps/Payout";
+
+import {
+  POSTBadge,
+  DELETEBadge,
+  GETBadge,
+  PUTBadge,
+  TypeBadge,
+  RequiredBadge,
+} from "@/components/myComps/Badges"
+
+
 type MdxFrontmatter = {
   title: string;
   description: string;
@@ -34,17 +49,25 @@ type MdxFrontmatter = {
 
 // add custom components
 const components = {
-  "Accordion": Accordion,
-  "AccordionContent": AccordionContent,
-  "AccordionItem": AccordionItem,
-  "AccordionTrigger": AccordionTrigger,
-  "Table": Table,
-  "TableBody": TableBody,
-  "TableCaption": TableCaption,
-  "TableCell": TableCell,
-  "TableHead": TableHead,
-  "TableHeader": TableHeader,
-  "TableRow": TableRow,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  IdAndSecTable,
+  POSTBadge,
+  DELETEBadge,
+  GETBadge,
+  PUTBadge,
+  BodyParams,
+  TypeBadge,
+  RequiredBadge,
 };
 
 // takes the slug and returns the path to the content file in this project

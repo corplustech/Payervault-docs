@@ -5,6 +5,8 @@ import { FLATTEND_ROUTES } from "@/lib/routes-config";
 import { notFound } from "next/navigation";
 import { getMarkdownForSlug } from "@/lib/markdown";
 import { cache } from "react";
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
 
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
@@ -41,6 +43,7 @@ export default async function DocsPage({params: { slug = [] },}: {params: { slug
   if (!res) notFound();
   
   return (
+    <Theme>
     <div className="flex items-start gap-12 ">
       <div className="flex-[3] py-10 ">
         <DocsBreadcrumb paths={slug} />
@@ -57,5 +60,6 @@ export default async function DocsPage({params: { slug = [] },}: {params: { slug
       {/* table of contents */}
       <Toc path={pathName} />
     </div>
+    </Theme>
   );
 }

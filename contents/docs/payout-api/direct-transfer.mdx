@@ -1,0 +1,161 @@
+# Direct Transfer
+
+Use this API to initiate amount transfers directly to the beneficiary account, no need to first create a new beneficiary. Make the payment via phone number, bank transfer, or UPI. 
+
+## URL
+
+<POSTBadge/>    https://paymentgateway.payervault.com/payout-api/directTransfer
+
+## Body Params
+
+<BodyParams feild="amount" type="double" isRequired={true}/>
+
+amount to be transferred. Decimals allowed (>= 1.00)
+
+<BodyParams feild="transferId" type="string" isRequired={true}/>
+
+
+A unique Id to identify this transfer. Alphanumeric and underscore (_) allowed (40 character limit).
+
+<BodyParams feild="transferMode" type="string" isRequired={false}/>
+
+It is the mode of transfer. Allowed values are: banktransfer, phone, neft, imps, rtgs, upi, paytm, and amazonpay. The default transferMode is banktransfer.
+
+<BodyParams feild="remarks" type="string" isRequired={false}/>
+
+Additional remarks, if any. Alphanumeric and white spaces allowed (70 characters limit).
+
+<BodyParams feild="beneDetails" type="object" isRequired={true}/>
+
+Object with the beneficiary details to whom amount is to be transferred. It should have the following feilds :
+
+<details>
+<summary>Click here to see the beneficiary details object</summary>
+<table>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold ">beneId <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary Id. Alphanumeric characters allowed.</td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold ">name <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary name, only alphabets and white space (100 character limit)</td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold "> email <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary email address, string in email Id format (Ex: johndoe_1@payervault.com) - should contain @ and dot (.) - (200 character limit) </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold ">phone <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary phone number, phone number registered in India (only digits, 8 - 12 characters after stripping +91) </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold "> bankAccount <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary bank account (9 - 18 alphanumeric character limit) (Required in case of banktransfer, imps, neft mode) </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold "> ifsc <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Accounts IFSC (standard IFSC format) - length 11, first four bank IFSC and 5th digit 0 (Required in case of banktransfer, imps, neft mode) </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold "> vpa <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary VPA, alphanumeric, dot (.), hyphen (-), at sign (@), and underscore () allowed (100 character limit). Note: underscore () and dot (.) gets accepted before and after at sign (@), but hyphen (-) get only accepted before at sign (@) (Required in case of UPI)</td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold ">address1 <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary address. Alphanumeric characters and space allowed (150 character limit). </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold ">address2 <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium"> Beneficiary address, alphanumeric and space allowed (but script, HTML tags gets sanitized or removed) (150 character limit) </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold "> city <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary city, only alphabets and white space (50 character limit)  </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold ">state <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiary state, only alphabets and white space (50 character limit)  </td>
+                    </tr>
+                </tbody>
+                <thead className="text-left">
+                    <tr>
+                        <th className="w-[100px] font-extrabold "> pincode <TypeBadge type="string"/></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="font-medium">Beneficiaries pincode, only numbers (6 character limit) </td>
+                    </tr>
+                </tbody>
+
+            </table>
+</details>
+
+## Headers
+
+<IdAndSecTable/>
