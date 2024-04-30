@@ -115,6 +115,18 @@ export const ROUTES: ROUTES_Type[] = [
       {
         title:"Request Batch Transfer",
         href: "/request-batch-transfer",
+      },
+      {
+        title:"Get Batch Transfer Status",
+        href: "/get-batch-transfer-status",
+      },
+      {
+        title:"Get All Batch Transfers",
+        href: "/get-all-batch-transfers",
+      },
+      {
+        title:"Payout Pricing",
+        href: "/payout-pricing",
       }
       
     ]
