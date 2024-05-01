@@ -1,30 +1,31 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, TwitterIcon, CommandIcon } from "lucide-react";
+import { Github, TwitterIcon, CommandIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Search from "./search";
 import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { FLATTEND_ROUTES } from "@/lib/routes-config";
+import Image from "next/image";
 
-export const NAVLINKS = [
-  {
-    title: "Documentation",
-    href: `/docs/${FLATTEND_ROUTES[0].href}`,
-  },
-  {
-    title: "Examples",
-    href: "#",
-  },
-  {
-    title: "Guides",
-    href: "#",
-  },
-  {
-    title: "Blog",
-    href: "#",
-  },
-];
+// export const NAVLINKS = [
+//   {
+//     title: "Documentation",
+//     href: `/docs/${FLATTEND_ROUTES[0].href}`,
+//   },
+//   {
+//     title: "Examples",
+//     href: "#",
+//   },
+//   {
+//     title: "Guides",
+//     href: "#",
+//   },
+//   {
+//     title: "Blog",
+//     href: "#",
+//   },
+// ];
 
 export function Navbar() {
   return (
@@ -35,7 +36,7 @@ export function Navbar() {
           <div className="md:flex hidden">
             <Logo />
           </div>
-          <div className="lg:flex hidden items-center gap-5 text-sm font-medium text-muted-foreground">
+          {/* <div className="lg:flex hidden items-center gap-5 text-sm font-medium text-muted-foreground">
             {NAVLINKS.map((item) => {
               return (
                 <Anchor
@@ -48,7 +49,7 @@ export function Navbar() {
                 </Anchor>
               );
             })}
-          </div>
+          </div> */}
         </div>
         <div className="flex items-center gap-3">
           <div className="flex gap-2">
@@ -58,7 +59,7 @@ export function Navbar() {
                 href="https://github.com/nisabmohd/Docs-Stater-Template"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
-                <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
+                <Github className="h-[1.1rem] w-[1.1rem]" />
               </Link>
               <Link
                 href="#"
@@ -81,8 +82,11 @@ export function Navbar() {
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2">
-      <CommandIcon className="w-6 h-6 text-muted-foreground" />
-      <h2 className="text-md font-bold">template/docs</h2>
+      {/* light theme logo */}
+      <Image alt="PayerVault" src={"https://res.cloudinary.com/dq2akdhnz/image/upload/v1713510399/payervault-sm_xgwdg8.webp"} width={200} height={80} className="dark:hidden"/>
+      {/* dark theme logo */}
+      <Image alt="PayerVault" src={"https://res.cloudinary.com/dq2akdhnz/image/upload/v1710158551/PAYERVAULT_logo_guhyyu.png"} width={200} height={80} className="hidden dark:inline"/>
+       
     </Link>
   );
 }

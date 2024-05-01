@@ -37,23 +37,23 @@ export const ROUTES: ROUTES_Type[] = [
         items:[
           {
             title: "Add Beneficiary",
-            href: "/add-beneficiary",
+            href: "/add",
           },
           {
             title:"Get Beneficiary Details",
-            href: "/get-beneficiary-details",
+            href: "/get-details",
           },
           {
             title:"Remove Beneficiary",
-            href: "/remove-beneficiary",
+            href: "/remove",
           },
           {
             title:"Get Beneficiary History",
-            href: "/get-beneficiary-history",
+            href: "/get-history",
           },
           {
             title:"Get All Beneficiaries",
-            href: "/get-all-beneficiaries",
+            href: "/get-all",
           },    
         ]
       },
@@ -126,10 +126,25 @@ export const FLATTEND_ROUTES = ROUTES.map(({ href, items }) => {
   // this will return an array that will have arrays as elements [[],[],[]], hence using .flat()
   return items.map((link) => {
     // returns an arrray of obeects [{},{},{}]
-    return {
-      title: link.title,
-      href: href + link.href,
-      disabled: link.disabled,
-    };
+
+    // if items contain a sub item then href will be combined with the sub item href
+    if(!link.items){
+      // if does not contain sub item then return the object with its detaiis as it is a clickable link
+      return {
+        title: link.title,
+        href: href + link.href,
+        disabled: link.disabled,
+      };
+    }
+    else{
+      const arrayOFSubLinkOBjs =  link.items.map((subLink) => {
+        return {
+          title: subLink.title,
+          href: href + link.href + subLink.href,
+          disabled: subLink.disabled,
+        };
+      });
+      return arrayOFSubLinkOBjs;
+    }
   });
-}).flat();
+}).flat(2);

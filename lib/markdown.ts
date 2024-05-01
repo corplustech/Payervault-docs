@@ -126,8 +126,10 @@ export async function getToc(slug: string) { // Toc = table of contents
 
 // get the previous and next routes for the current route
 export function getPreviousNext(path: string) {
+  // finding the index of the elem in the array where the href field is equal to the path
   const index = FLATTEND_ROUTES.findIndex(({ href }) => href == path);
   return {
+    // you will get an undefined, if the index does not 
     prev: FLATTEND_ROUTES[index - 1],
     next: FLATTEND_ROUTES[index + 1],
   };
