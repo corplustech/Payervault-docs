@@ -7,25 +7,8 @@ import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { FLATTEND_ROUTES } from "@/lib/routes-config";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
-// export const NAVLINKS = [
-//   {
-//     title: "Documentation",
-//     href: `/docs/${FLATTEND_ROUTES[0].href}`,
-//   },
-//   {
-//     title: "Examples",
-//     href: "#",
-//   },
-//   {
-//     title: "Guides",
-//     href: "#",
-//   },
-//   {
-//     title: "Blog",
-//     href: "#",
-//   },
-// ];
 
 export function Navbar() {
   return (
@@ -52,26 +35,15 @@ export function Navbar() {
           </div> */}
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex gap-2">
             <Search />
             <div className="flex -space-x-1.5">
               <Link
-                href="https://github.com/nisabmohd/Docs-Stater-Template"
-                className={buttonVariants({ variant: "ghost", size: "icon" })}
+                href="https://paymentgateway.payervault.com/sign-up"
+                className="pt-2 mx-2" 
               >
-                <Github className="h-[1.1rem] w-[1.1rem]" />
-              </Link>
-              <Link
-                href="#"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "icon",
-                })}
-              >
-                <TwitterIcon className="h-[1.1rem] w-[1.1rem]" />
-              </Link>
+                Create Account
+              </Link> 
               <ModeToggle />
-            </div>
           </div>
         </div>
       </div>
@@ -80,12 +52,25 @@ export function Navbar() {
 }
 
 export function Logo() {
+  // const { theme } = useTheme();
   return (
     <Link href="/" className="flex items-center gap-2">
+{/* theme image setting using css */}
+
       {/* light theme logo */}
       <Image alt="PayerVault" src={"https://res.cloudinary.com/dq2akdhnz/image/upload/v1713510399/payervault-sm_xgwdg8.webp"} width={200} height={80} className="dark:hidden"/>
       {/* dark theme logo */}
       <Image alt="PayerVault" src={"https://res.cloudinary.com/dq2akdhnz/image/upload/v1710158551/PAYERVAULT_logo_guhyyu.png"} width={200} height={80} className="hidden dark:inline"/>
+      <div className="px-1 bg-[#765BFF] text-white relative right-2 ">
+        doc
+      </div>
+{/* theme image setting using JS */}
+
+      {/* {theme === "light" ? (
+        <Image alt="PayerVault" src={"https://res.cloudinary.com/dq2akdhnz/image/upload/v1713510399/payervault-sm_xgwdg8.webp"} width={200} height={80} className="dark:hidden"/> 
+      ):(
+        <Image alt="PayerVault" src={"https://res.cloudinary.com/dq2akdhnz/image/upload/v1710158551/PAYERVAULT_logo_guhyyu.png"} width={200} height={80} className="hidden dark:inline"/> 
+      )} */}
        
     </Link>
   );
