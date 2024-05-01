@@ -22,7 +22,7 @@ export function Leftbar() {
               <h4 className="font-extrabold text-sm">{title}</h4>
               <div className="flex flex-col gap-3 text-sm dark:text-neutral-300/85 text-neutral-800 ml-0.5">
 
-                {items.map((subItem) => {
+                {items.map((subItem, index) => {
                   // if not subItem.items then retun this , else return a dropdown link
                   if (!subItem.items) {
                     const key = `/docs/${href}${subItem.href}`;
@@ -39,10 +39,10 @@ export function Leftbar() {
                   }
                   else {
                     return (
-                      <Details title={subItem.title}>
+                      <Details title={subItem.title} key={index}>
                         {subItem.items.map((subSubItem) => {
                           const key = `/docs/${href}/${subItem.href}/${subSubItem.href}`
-                          return <div className="flex flex-col">
+                          return <div className="flex flex-col" key={key}>
                             <Anchor
                               activeClassName="font-medium dark:text-white text-black"
                               href={key}
@@ -109,7 +109,7 @@ export function SheetLeftbar() {
                 <div className="flex flex-col gap-3 mt-5" key={href}>
                   <h4 className="font-medium">{title}</h4>
                   <div className="flex flex-col gap-3 dark:text-neutral-300/85 text-neutral-800 ml-0.5">
-                    {items.map((subItem) => {
+                    {items.map((subItem, index) => {
                       // if not subItem.items then retun this , else return a dropdown link
                       if (!subItem.items) {
                         const key = `/docs/${href}${subItem.href}`;
@@ -126,10 +126,10 @@ export function SheetLeftbar() {
                       }
                       else {
                         return (
-                          <Details title={subItem.title}>
+                          <Details title={subItem.title} key={index}>
                             {subItem.items.map((subSubItem) => {
                               const key = `/docs/${href}/${subItem.href}/${subSubItem.href}`
-                              return <div className="flex flex-col">
+                              return <div className="flex flex-col" key={key}>
                                 <Anchor
                                   activeClassName="font-medium dark:text-white text-black"
                                   href={key}
