@@ -16,45 +16,7 @@ type ROUTES_Type = {
 
 // these routes are controlling the routes in the sidebar and their content as well
 export const ROUTES: ROUTES_Type[] = [
-  // {
-  //   title: "Getting Started",
-  //   href: "getting-started",
-  //   // sub routes in the getting-started route 
-  //   items: [
-  //     {
-  //       title: "Introduction",
-  //       href: "/introduction",
-  //     },
-  //     {
-  //       title: "Installation",
-  //       href: "/installation",
-  //     },
-  //     {
-  //       title: "components.json",
-  //       href: "/components-json",
-  //     },
-  //     {
-  //       title: "Project Structure",
-  //       href: "/project-structure",
-  //       disabled: true,
-  //     },
-  //     {
-  //       title: "Theming",
-  //       href: "/theming",
-  //       disabled: true,
-  //     },
-  //     {
-  //       title: "Typography",
-  //       href: "/typography",
-  //       disabled: true,
-  //     },
-  //     {
-  //       title: "Changelog",
-  //       href: "/changelog",
-  //       disabled: true,
-  //     },
-  //   ],
-  // },
+  
 
   // payout api routes 
   {
@@ -154,16 +116,6 @@ export const ROUTES: ROUTES_Type[] = [
         href: "/payout-pricing",
       }
     ]
-  },
-  {
-    title: "Components",
-    href: "components",
-    items: [
-      {
-        title: "Accordian",
-        href: "/accordian",
-      },
-    ],
   },
 ];
 

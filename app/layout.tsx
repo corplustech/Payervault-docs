@@ -33,7 +33,6 @@ export default function RootLayout({
           <main className="sm:container mx-auto w-[85vw] h-auto">
             {children}
           </main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

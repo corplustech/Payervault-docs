@@ -9,7 +9,9 @@ type AnchorProps = ComponentProps<typeof Link> & {
   absolute?: boolean;
   activeClassName?: string;
   disabled?: boolean;
-};
+  isNested?: true;
+  nestedTitle?: string;
+}
 
 export default function Anchor({
   absolute,
@@ -17,13 +19,20 @@ export default function Anchor({
   activeClassName = "",
   disabled,
   children,
+  isNested,
+  nestedTitle,
   ...props
 }: AnchorProps) {
   // checking the current parh using the usePathname hook and href if are same
   const path = usePathname();
-  const isMatch = absolute
+  let isMatch = absolute
     ? props.href.toString().split("/")[1] == path.split("/")[1]
     : path === props.href;
+
+  // if isNested then check if path name includes the title
+   if (isNested) {
+    path.includes(nestedTitle!.toLowerCase()) && (isMatch = true);
+   }
 
   if (disabled)
     return (

@@ -6,6 +6,7 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger, } from "@/c
 import { Logo, NAVLINKS } from "./navbar";
 import { Button } from "./ui/button";
 import { AlignLeftIcon } from "lucide-react";
+import Details from "./details";
 
 // sidebar for large screens 
 export function Leftbar() {
@@ -35,8 +36,7 @@ export function Leftbar() {
                   }
                   else {
                     return (
-                      <details open>
-                        <summary>{subItem.title}</summary>
+                      <Details title={subItem.title}>
                         {subItem.items.map((subSubItem) => {
                           const key = `/docs/${href}/${subItem.href}/${subSubItem.href}`
                           return <div className="flex flex-col">
@@ -46,12 +46,14 @@ export function Leftbar() {
                             key={key}
                             disabled={subItem.disabled}
                             className="m-2 ms-8"
+                            isNested = {true}
+                            nestedTitle={subSubItem.href}
                           >
                             {subSubItem.title}
                           </Anchor>
                           </div>
                         })}
-                      </details>
+                      </Details>
                     )
                   }
                 })}
