@@ -11,7 +11,7 @@ export default function Home() {
       PayerVault developer documentation
       </h1>
       <p className="mb-8 sm:text-xl max-w-[800px] text-muted-foreground">
-      Welcome to the PayerVault developer documentation. You will find help about PayerVault's APIs that will help you start using our products quickly.
+      Welcome to the PayerVault developer documentation. You will find help about PayerVault&apos;s APIs that will help you start using our products quickly.
       </p>
       <div className="flex flex-row items-center gap-5">
         <Link
