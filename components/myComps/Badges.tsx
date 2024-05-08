@@ -28,3 +28,7 @@ export function TypeBadge({type}:{type:string}){
 export function RequiredBadge(){
   return <span className="text-red-500">&nbsp; &nbsp; required</span>
 }
+
+export function Highlight({text}:{text:string} ){
+  return <span className="bg-gray-800 text-red-500 px-1">{text}</span>
+}

@@ -1,0 +1,129 @@
+# Get Checkout Link
+
+## Endpoint:
+
+```
+/api/v1/checkout-link/:customer_id
+```
+## Method:
+
+<GETBadge/> 
+
+## Description:
+
+This API endpoint retrieves the URL for the checkout page associated with the specified customer's cart. It fetches the cart details from the database based on the provided customer ID and returns the URL for the checkout page.
+
+## Path Parameter:
+
+<BodyParams feild="customer_id" type="string" isRequired={true}/>
+A unique ID of the customer.
+
+## Request Header:
+
+<AccessKeyAndSec/>
+
+## Response:
+
+- **Success Response:**
+    - **Status Code:** 200
+    - **Content Type:** JSON
+    - **Response Body:** An object containing the URL for the checkout page.
+- **Error Response:**
+    - **Status Code:** 404 (Not Found) or 500 (Internal Server Error)
+    - **Content Type:** JSON
+    - **Response Body:** An error message explaining the issue encountered.
+
+## Sample Usage:
+
+```json
+// Sample Request Headers
+accessKey: your-access-key
+accessSecret: your-access-secret
+
+// Sample Request
+GET /api/v1/checkout-link/customer-id-123
+
+// Sample Response (Success)
+{
+  "url": "<https://your-website.com/checkout/customer-id-123>"
+}
+
+// Sample Response (Error)
+{
+  "message": "No products in cart"
+}
+
+```
+
+## Notes:
+
+- This endpoint requires authentication with an access key and access secret provided in the request headers.
+- The 'getUserWithKeys' function retrieves user details and verifies authentication.
+- The 'connectMongodb' function establishes a connection to the MongoDB database.
+- The cart details are fetched based on the user's ID, live status, and the provided customer ID.
+- If the cart contains products, the URL for the checkout page is returned.
+- Error handling is implemented to catch and respond appropriately to any internal server errors.
+
+Here are examples of how you can make requests to the '/api/v1/checkout-link/(customer_id)' endpoint using different programming languages:
+
+## cURL (Command Line)
+
+```bash
+curl -X GET \\
+  -H "accessKey: your-access-key" \\
+  -H "accessSecret: your-access-secret" \\
+  <https://your-api-domain.com/api/v1/checkout-link/customer-id-123>
+
+```
+
+## JavaScript (Using fetch)
+
+```jsx
+fetch('<https://your-api-domain.com/api/v1/checkout-link/customer-id-123>', {
+  method: 'GET',
+  headers: {
+    'accessKey': 'your-access-key',
+    'accessSecret': 'your-access-secret'
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+```
+
+## Python (Using requests)
+
+```python
+import requests
+
+url = '<https://your-api-domain.com/api/v1/checkout-link/customer-id-123>'
+headers = {
+    'accessKey': 'your-access-key',
+    'accessSecret': 'your-access-secret'
+}
+
+response = requests.get(url, headers=headers)
+data = response.json()
+print(data)
+
+```
+
+## Node.js (Using axios)
+
+```js
+const axios = require('axios');
+
+const url = '<https://your-api-domain.com/api/v1/checkout-link/customer-id-123>';
+const headers = {
+  'accessKey': 'your-access-key',
+  'accessSecret': 'your-access-secret'
+};
+
+axios.get(url, { headers })
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
+
+```
+
+These examples demonstrate how to make a <GETBadge/> request to the <Highlight text="/api/v1/checkout-link/(customer_id)"/> endpoint in various languages, passing the required 'accessKey' and 'accessSecret' headers for authentication.

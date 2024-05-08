@@ -1,0 +1,110 @@
+# Save and Update Products
+
+## Endpoint:
+```
+/api/v1/cart
+```
+## Method:
+
+<POSTBadge/>
+
+## Description:
+
+This API endpoint allows users to add or update products in their cart. Users can specify the products they want to add or update, along with their quantities and discounts. If the product already exists in the cart, its quantity and discount will be updated accordingly.
+
+
+## Request Header :
+
+<AccessKeyAndSec/>
+
+## Request Body:
+
+- **Schema:**
+    
+    ```json
+    {
+        "customer": {
+        "name": "string (optional)",
+        "email": "string (required)",
+        "contact": "string (optional)"
+        },
+        "products": [
+        {
+            "productID": "string (required)",
+            "discount": "number (required, default: 0, min: 0)",
+            "quantity": "number (required, default: 1, max: 10, min: 1)"
+        }
+        ],
+        "customerID": "string (required)"
+    }
+
+    ```
+    
+![Untitled](/Untitled.png)
+
+You will get 'productID' from the checkout products Page. Just add your products here and add the 'productID' to your database.
+
+## Response:
+
+- **Success Response:**
+    - **Status Code:** 200
+    - **Content Type:** JSON
+    - **Response Body:** An object indicating the success of the operation.
+- **Error Response:**
+    - **Status Code:** 206 (Partial Content) or 500 (Internal Server Error)
+    - **Content Type:** JSON
+    - **Response Body:** An error message explaining the issue encountered.
+
+## Sample Usage:
+
+```
+// Sample Request Headers
+accessKey: your-access-key
+accessSecret: your-access-secret
+
+// Sample Request Body
+{
+  "customer": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "contact": "1234567890"
+  },
+  "products": [
+    {
+      "productID": "product-id-1",
+      "discount": 10,
+      "quantity": 2
+    },
+    {
+      "productID": "product-id-2",
+      "discount": 5,
+      "quantity": 1
+    }
+  ],
+  "customerID": "customer-id-123"
+}
+
+// Sample Response (Success)
+{
+  "success": true,
+  "message": "Product updated successfully"
+}
+
+```
+
+```json
+// Sample Response (Error)
+{
+  "message": "Internal Server Error"
+}
+
+```
+
+## Notes:
+
+- This endpoint requires authentication with an access key and access secret provided in the request headers.
+- The request body should contain information about the customer, products to be added or updated in the cart, and the customer ID.
+- The existing cart items are fetched based on the user's ID and live status.
+- Products are validated against the product collection to ensure they exist.
+- If the product exists in the cart, its quantity and discount are updated; otherwise, a new item is added to the cart.
+- Error handling is implemented to catch and respond appropriately to any internal server errors.

@@ -30,6 +30,7 @@ import {
 import {
   IdAndSecTable,
   BodyParams,
+  AccessKeyAndSec,
 } from "@/components/myComps/Payout";
 
 import {
@@ -39,6 +40,7 @@ import {
   PUTBadge,
   TypeBadge,
   RequiredBadge,
+  Highlight,
 } from "@/components/myComps/Badges"
 
 
@@ -68,6 +70,8 @@ const components = {
   BodyParams,
   TypeBadge,
   RequiredBadge,
+  Highlight,
+  AccessKeyAndSec,
 };
 
 // takes the slug and returns the path to the content file in this project

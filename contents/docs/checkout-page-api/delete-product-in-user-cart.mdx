@@ -1,0 +1,82 @@
+# Delete Product in User Cart
+
+### Route Documentation: 'DELETE' Method
+
+### Endpoint:
+
+'/api/v1/cart'
+
+### Description:
+
+This API endpoint allows users to remove products from their cart. Users can specify the products they want to delete from the cart based on their IDs.
+
+### Method:
+
+'DELETE'
+
+### Request Header:
+
+- **Required Headers:**
+    - 'accessKey': Access key for authentication.
+    - 'accessSecret': Access secret for authentication.
+
+### Request Body:
+
+- **Schema:**
+    
+    ```json
+    {
+      "customerID": "string (required)",
+      "products": ["string (required)"]
+    }
+    
+    ```
+    
+
+### Response:
+
+- **Success Response:**
+    - **Status Code:** 206 (Partial Content)
+    - **Content Type:** JSON
+    - **Response Body:** An object indicating the success of the operation.
+- **Error Response:**
+    - **Status Code:** 206 (Partial Content) or 500 (Internal Server Error)
+    - **Content Type:** JSON
+    - **Response Body:** An error message explaining the issue encountered.
+
+### Sample Usage:
+
+```json
+// Sample Request Headers
+accessKey: your-access-key
+accessSecret: your-access-secret
+
+// Sample Request Body
+{
+  "customerID": "customer-id-123",
+  "products": ["product-id-1", "product-id-2"]
+}
+
+// Sample Response (Success)
+{
+  "success": true,
+  "message": "Product deleted successfully"
+}
+
+```
+
+```json
+// Sample Response (Error)
+{
+  "message": "Internal Server Error"
+}
+
+```
+
+### Notes:
+
+- This endpoint requires authentication with an access key and access secret provided in the request headers.
+- The request body should contain the ID of the customer and an array of product IDs to be deleted from the cart.
+- The existing cart items are fetched based on the user's ID, live status, and customer ID.
+- If the specified products exist in the cart, they will be removed from the cart.
+- Error handling is implemented to catch and respond appropriately to any internal server errors.

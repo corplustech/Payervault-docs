@@ -16,8 +16,25 @@ type ROUTES_Type = {
 
 // these routes are controlling the routes in the sidebar and their content as well
 export const ROUTES: ROUTES_Type[] = [
-  
-
+  // checkout page api
+  {
+    title:"Checkout Page API",
+    href:"checkout-page-api",
+    items:[
+      {
+        title:"Save and Update Products",
+        href:"/save-and-update-products",
+      },
+      {
+        title:"Delete Product in User Cart",
+        href:"/delete-product-in-user-cart",
+      },
+      {
+        title:"Get Checkout Link",
+        href:"/get-checkout-link",
+      }
+    ]
+  },
   // payout api routes 
   {
     title: "Payout API",
