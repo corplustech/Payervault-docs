@@ -22,6 +22,10 @@ export const ROUTES: ROUTES_Type[] = [
     href:"checkout-page-api",
     items:[
       {
+        title:"Get Checkout Link",
+        href:"/get-checkout-link",
+      },
+      {
         title:"Save and Update Products",
         href:"/save-and-update-products",
       },
@@ -29,10 +33,6 @@ export const ROUTES: ROUTES_Type[] = [
         title:"Delete Product in User Cart",
         href:"/delete-product-in-user-cart",
       },
-      {
-        title:"Get Checkout Link",
-        href:"/get-checkout-link",
-      }
     ]
   },
   // payout api routes 

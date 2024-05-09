@@ -1,4 +1,9 @@
+"use client"
+
+import {Dialog, DialogContent, DialogTrigger,} from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table"
+import Image from "next/image"
+import "./dialogStyle.css"
 
 
 export function IdAndSecTable() {
@@ -40,5 +45,21 @@ export function AccessKeyAndSec() {
                 </TableRow>
             </TableBody>
         </Table>
+    )
+}
+
+export function ImageDialog({ src, imageStyling }: { src: string, imageStyling?: string}) {
+
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Image src={src} alt="image" width={500} height={200} className={imageStyling}/>
+            </DialogTrigger>
+            <DialogContent className="p-0 max-w-full">
+                <div className="p-12">
+                    <Image src={src} alt="image" width={500} height={200} className="w-full h-full"/>
+                </div>
+            </DialogContent>
+        </Dialog>
     )
 }

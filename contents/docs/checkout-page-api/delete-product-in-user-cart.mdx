@@ -1,26 +1,22 @@
 # Delete Product in User Cart
 
-### Route Documentation: 'DELETE' Method
+## Endpoint:
+```
+/api/v1/cart
+```
+## Method:
 
-### Endpoint:
-
-'/api/v1/cart'
-
-### Description:
+<DELETEBadge/>
+## Description:
 
 This API endpoint allows users to remove products from their cart. Users can specify the products they want to delete from the cart based on their IDs.
 
-### Method:
 
-'DELETE'
+## Request Header:
 
-### Request Header:
+<AccessKeyAndSec/>
 
-- **Required Headers:**
-    - 'accessKey': Access key for authentication.
-    - 'accessSecret': Access secret for authentication.
-
-### Request Body:
+## Request Body:
 
 - **Schema:**
     
@@ -33,7 +29,7 @@ This API endpoint allows users to remove products from their cart. Users can spe
     ```
     
 
-### Response:
+## Response:
 
 - **Success Response:**
     - **Status Code:** 206 (Partial Content)
@@ -44,7 +40,7 @@ This API endpoint allows users to remove products from their cart. Users can spe
     - **Content Type:** JSON
     - **Response Body:** An error message explaining the issue encountered.
 
-### Sample Usage:
+## Sample Usage:
 
 ```json
 // Sample Request Headers
@@ -73,7 +69,7 @@ accessSecret: your-access-secret
 
 ```
 
-### Notes:
+## Notes:
 
 - This endpoint requires authentication with an access key and access secret provided in the request headers.
 - The request body should contain the ID of the customer and an array of product IDs to be deleted from the cart.

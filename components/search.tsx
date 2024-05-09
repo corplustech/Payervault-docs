@@ -23,7 +23,7 @@ export default function Search() {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <div className="relative flex-1 max-w-md">
+          <div className="relative flex-1 max-w-md me-10">
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-gray-400" />
             <Input
               className="w-full rounded-md border border-gray-200  py-2 pl-10 pr-4 text-sm shadow-sm focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:border-gray-800  dark:text-gray-50 dark:focus:border-gray-700 dark:focus:ring-gray-700"

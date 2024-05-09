@@ -31,7 +31,8 @@ import {
   IdAndSecTable,
   BodyParams,
   AccessKeyAndSec,
-} from "@/components/myComps/Payout";
+  ImageDialog,
+} from "@/components/myComps/comps";
 
 import {
   POSTBadge,
@@ -72,6 +73,7 @@ const components = {
   RequiredBadge,
   Highlight,
   AccessKeyAndSec,
+  ImageDialog,
 };
 
 // takes the slug and returns the path to the content file in this project
