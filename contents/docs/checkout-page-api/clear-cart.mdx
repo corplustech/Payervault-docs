@@ -1,0 +1,48 @@
+# Clear All Products from a Cart
+
+## Description
+
+This endpoint allows users to clear all products from their checkout cart. The operation removes all products associated with the user's cart.
+
+## Endpoint
+```
+/api/v1/cart/clearAll
+```
+
+## Method
+
+<DELETEBadge/>
+
+## Authentication
+
+This endpoint requires authentication using an accessKey and accessSecret. These credentials need to be included in the request headers for authorization.
+
+## Request Headers
+
+<AccessKeyAndSec/>
+
+## Response
+
+### Success Response: 
+  - ***Status Code:*** 200 OK
+  - ***Body:*** JSON object indicating the success of the operation.
+  
+    ```json
+    {
+        "success": true,
+        "message": "Cleared all products from the cart!"
+    }
+    ```
+    
+
+### Error Response:
+  - ***Status Code:*** 
+    - 500 Internal Server Error: If an unexpected error occurs.
+  - ***Body:*** JSON object with an error message.
+  
+    ```json
+    {
+        "success": false,
+        "message": "Internal server error"
+    }
+    ```

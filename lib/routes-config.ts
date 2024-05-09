@@ -16,26 +16,7 @@ type ROUTES_Type = {
 
 // these routes are controlling the routes in the sidebar and their content as well
 export const ROUTES: ROUTES_Type[] = [
-  // checkout page api
-  {
-    title:"Checkout Page API",
-    href:"checkout-page-api",
-    items:[
-      {
-        title:"Get Checkout Link",
-        href:"/get-checkout-link",
-      },
-      {
-        title:"Save and Update Products",
-        href:"/save-and-update-products",
-      },
-      {
-        title:"Delete Product in User Cart",
-        href:"/delete-product-in-user-cart",
-      },
-    ]
-  },
-  // payout api routes 
+   // payout api routes 
   {
     title: "Payout API",
     href: "payout-api",
@@ -131,6 +112,33 @@ export const ROUTES: ROUTES_Type[] = [
       {
         title:"Payout Pricing",
         href: "/payout-pricing",
+      }
+    ]
+  },
+  // checkout page api
+  {
+    title:"Checkout Page API",
+    href:"checkout-page-api",
+    items:[
+      {
+        title:"Save and Update Products",
+        href:"/save-and-update-products",
+      },
+      {
+        title:"Get Checkout Link",
+        href:"/get-checkout-link",
+      },
+      {
+        title:"Delete Product in User Cart",
+        href:"/delete-product-in-user-cart",
+      },
+      {
+        title:"Get Cart Products",
+        href:"/get-cart-products",
+      },
+      {
+        title:"Clear cart",
+        href:"/clear-cart",
       }
     ]
   },

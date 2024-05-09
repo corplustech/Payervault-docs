@@ -1,0 +1,71 @@
+# Get Cart Products
+
+Retrieve details of a checkout cart by its ID.
+
+## Description
+
+This endpoint allows users to retrieve details of a checkout cart by providing its unique identifier (id). The details include information about the products in the cart and the associated customer.
+
+## Endpoint
+```
+/api/v1/cart/:id
+```
+## Method
+
+<GETBadge/>
+
+
+## Path Parameter:
+
+<BodyParams feild="id" type="string" isRequired={true}/>
+A unique identifier of the checkout cart.
+
+## Authentication
+
+This endpoint requires authentication using an accessKey and accessSecret. These credentials need to be included in the request headers for authorization.
+
+## Request Headers
+
+<AccessKeyAndSec/>
+
+## Response
+
+####  Success Response:
+  - ***Status Code:*** 200 OK
+  - ***Body:*** JSON object containing details of the checkout cart.
+  
+    ```json
+    {
+        "_id" : "customerID",
+        "products": [
+            {
+                "productID": "productID",
+                "quantity": 1,
+                "product": {
+                    "name": "Product Name",
+                    "price": 10.99,
+                    "description": "Product Description"
+                    // Additional product details
+                }
+            },
+            // Additional products in the cart
+        ],
+        "customer": {
+            "name": "Customer Name",
+            "email": "customer@example.com"
+            // Additional customer details
+        }
+    }
+    ```
+
+#### Error Response:
+- ***Status Code:*** 404 Not Found
+- ***Body:*** JSON object with an error message indicating that the product was not found.
+  
+    ```json
+    {
+        "message": "Product not found"
+    }
+    ```
+
+
