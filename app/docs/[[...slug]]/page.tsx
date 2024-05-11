@@ -7,7 +7,6 @@ import { getMarkdownForSlug } from "@/lib/markdown";
 import { cache } from "react";
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
-import ReactMarkdown from 'react-markdown'
 // it is a higher order function which takes a function as an argument and returns a function
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 // its  purpose is to render the page only in case of cashe miss, else server from the cache
