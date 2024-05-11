@@ -1,0 +1,156 @@
+# Fetch or Filter Orders
+
+
+## Endpoint
+```
+/api/v1/orders
+```
+
+### Description:
+
+This API endpoint retrieves orders based on specified filters such as email, contact, status, entity, and doc. It fetches orders from the database and returns the relevant data in **JSON** format.
+
+### Method:
+
+<GETBadge/>
+
+### Parameters:
+
+Certainly! Here's the updated section with the replaced text for all the mentioned components:
+
+**Query Parameters:**
+    - <Highlight text="email"/> (optional): Email address of the customer.
+    - <Highlight text="contact"/> (optional): Contact information of the customer.
+    - <Highlight text="status"/> : Status of the order. Possible values include:
+        - <Highlight text="authorized"/>
+        - <Highlight text="attempted"/>
+        - <Highlight text="failed"/>
+        - <Highlight text="paid"/>
+        - <Highlight text="refund.initiated"/>
+        - <Highlight text="refunded"/>
+        - <Highlight text="refund.failed"/>
+        - <Highlight text="refund.speed_changed"/>
+        - <Highlight text="disputed"/>
+        - <Highlight text="dispute.won"/>
+        - <Highlight text="dispute.loss"/>
+        - <Highlight text="hold"/>
+        - <Highlight text="settled"/>
+    - <Highlight text="entity"/> (optional): Type of entity. Possible values are <Highlight text="paymentpages"/> or <Highlight text="paymentlinks"/> or <Highlight text="checkout_carts"/>.
+    - <Highlight text="doc"/> (optional): Doc reference.
+
+Let me know if there's anything else you need!
+
+## Request Headers
+
+<AccessKeyAndSec/>
+
+## Request Body:
+
+No request body is required for this endpoint.
+
+## Response:
+
+- **Success Response:**
+    - **Status Code:** 200
+    - **Content Type:** JSON
+    - **Response Body:** An array of objects containing order details.
+- **Error Response:**
+    - **Status Codes:**
+        - 206 (Partial Content)
+        - 500 (Internal Server Error)
+        - 401 (Unauthorized)
+    - **Content Type:** JSON
+    - **Response Body:** An error message explaining the issue encountered.
+
+### Sample Usage:
+
+    ```json
+    // Sample Request Headers
+    accessKey: your-access-key
+    accessSecret: your-access-secret
+
+    // Sample Request
+    GET https://<api-url>/api/v1/orders?email=user@example.com&status=created
+
+    ```
+
+    ```json
+    // Sample Response
+    [
+        {
+            "createdAt": "2024-04-13T08:00:00Z",
+            "updatedAt": "2024-04-13T08:30:00Z",
+            "events": [...],
+            "customer": {...},
+            "amount": 100,
+            "amountPaid": 50,
+            "amountDue": 50,
+            "orderId": "123456",
+            "type": "paymentpages",
+            "doc": "doc123",
+            "status": "created"
+        },
+        ...
+    ]
+
+    ```
+
+### Notes:
+
+- This endpoint requires authentication with an access key and access secret provided in the request headers.
+- Data is filtered based on the user's ID and live status.
+- Filtering is performed based on the query parameters provided in the request.
+- Orders are projected to include only necessary fields in the response.
+
+### Example in CURL:
+
+    ```bash
+    curl -X GET \\
+    'https://<api-url>/api/v1/orders?email=user@example.com&status=created' \\
+    -H 'accessKey: your-access-key' \\
+    -H 'accessSecret: your-access-secret'
+
+    ```
+
+### Example in Python (requests library):
+
+    ```python
+    import requests
+
+    url = "https://<api-url>/api/v1/orders"
+    headers = {
+        "accessKey": "your-access-key",
+        "accessSecret": "your-access-secret"
+    }
+    params = {
+        "email": "user@example.com",
+        "status": "created"
+    }
+
+    response = requests.get(url, headers=headers, params=params)
+    print(response.json())
+
+    ```
+
+### Example in Node.js (axios library):
+
+    ```jsx
+    const axios = require('axios');
+
+    const url = 'https://<api-url>/api/v1/orders';
+    const headers = {
+        'accessKey': 'your-access-key',
+        'accessSecret': 'your-access-secret'
+    };
+    const params = {
+        'email': 'user@example.com',
+        'status': 'created'
+    };
+
+    axios.get(url, { headers, params })
+        .then(response => console.log(response.data))
+        .catch(error => console.error(error));
+
+    ```
+
+These examples demonstrate how to make requests to the API endpoint using different programming languages and libraries.

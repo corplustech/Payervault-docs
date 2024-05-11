@@ -1,4 +1,4 @@
-# Clear All Products from a Cart
+# Clear All Products from Customer's Cart
 
 ## Description
 
@@ -21,6 +21,15 @@ This endpoint requires authentication using an accessKey and accessSecret. These
 
 <AccessKeyAndSec/>
 
+## Request Body:
+
+- **Schema:**
+    
+    ```JSON
+    {
+      "customerID": "string (required)",
+    }
+    ```
 ## Response
 
 ### Success Response: 
@@ -46,3 +55,5 @@ This endpoint requires authentication using an accessKey and accessSecret. These
         "message": "Internal server error"
     }
     ```
+
+

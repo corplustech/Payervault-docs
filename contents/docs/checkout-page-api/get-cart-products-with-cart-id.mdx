@@ -1,0 +1,80 @@
+# Get Cart Products with Cart ID
+
+Retrieve details of a checkout cart by its ID.
+
+## Description
+
+This endpoint allows users to retrieve details of a checkout cart by providing its unique identifier (id). The details include information about the products in the cart and the associated customer.
+
+## Endpoint
+```python
+/api/v1/cart/:id
+```
+## Method
+
+<GETBadge/>
+
+
+## Path Parameter:
+
+<BodyParams feild="id" type="string" isRequired={true}/>
+A unique identifier of the checkout cart.
+
+## Authentication
+
+This endpoint requires authentication using an accessKey and accessSecret. These credentials need to be included in the request headers for authorization.
+
+## Request Headers
+
+<AccessKeyAndSec/>
+
+## Response
+
+####  Success Response:
+  - ***Status Code:*** 200 OK
+  - ***Body:*** JSON object containing details of the checkout cart.
+  
+```json
+{
+    "cartId": "663c66fec3ac7bf550d3f93b",
+    "customerID": "testCustomerID",
+    "product": {
+        "_id": "663c9a4aa93f562f4ddd81d9",
+        "name": "Sample Product",
+        "productID": "product-1",
+        "isLive": true,
+        "description": "This is a sample product description.",
+        "price": 100,
+        "discountedPrice": 80,
+        "isDiscounted": true,
+        "image": {
+            "url": "https://example.com/sample-image.jpg",
+            "fileType": "image/jpeg",
+            "name": "sample-image",
+            "_id": "663c9a4aa93f562f4ddd81de"
+        },
+        "quantity": 1,
+        "discount": 20
+    },
+    "customer": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "contact": "+1234567890"
+    }
+}
+
+```
+
+- **Error Response**:
+  - Status Code: 
+    - 404 Not Found: If the cart is not found.
+    - 500 Internal Server Error: If an unexpected error occurs.
+  - Body: JSON object with an error message.
+  
+    ```json
+    {
+        "message": "404 not found" or "Internal Server Error"
+    }
+    ```
+
+

@@ -1,0 +1,168 @@
+### Introduction
+
+This API documentation outlines the endpoints and data structures required for integrating your application with our webhook system. Webhooks enable real-time notifications about various events occurring within our system, facilitating seamless synchronization and automation.
+
+### **Add Your Webhook Here**
+
+At <Highlight text="/dashboard/payin-api/webhooks"/>
+
+<ImageDialog src="/webhook.png" imageStyling="w-full"/>
+
+### Authentication
+
+No authentication is required for webhook endpoints. However, it is recommended to implement security measures like verifying the <Highlight text="signature"/> of incoming requests.
+
+### Webhook Events
+
+```json
+[
+"created",
+"authorized",
+"attempted",
+"failed",
+"paid",
+"refund.initiated",
+"refunded",
+"refund.failed",
+"refund.speed_changed",
+"disputed",
+"dispute.won",
+"dispute.loss",
+]
+
+```
+
+### Example Header
+
+```json
+{
+	"signature":"----------------------------Unique Signature---------------"
+}
+```
+
+### Example Payload
+
+```json
+{
+    "fields": [],
+    "userID": "613e52c61234567890abcdef",
+    "amount": 100.50,
+    "status": "paid",
+    "entity": "paymentpages",
+    "orderId": "1234567890",
+    "amountPaid": 100.50,
+    "amountDue": 0,
+    "events": [
+        {
+            "eventType": "payment_success",
+            "data": {
+                "transaction_id": "txn_1234567890",
+                "payment_method": "credit_card",
+                "amount": 100.50
+            },
+            "createdAt": "2024-04-16T12:00:00Z"
+        }
+    ],
+    "description": "Order description",
+    "fee": 1.50,
+    "customer": {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "contact": "+1234567890"
+    },
+    "accept_partial": true,
+    "isLive": true,
+    "first_min_partial_amount": 50.00,
+    "doc": "613e52c61234567890abcdef"
+}
+
+```
+
+### Security
+
+To verify the authenticity of webhook payloads, compute the HMAC signature using the provided secret key and compare it with the <Highlight text="signature"/> header included in the request.
+
+### Examples
+
+Certainly! In most cases, when working with JSON payloads, you'll stringify the payload before creating the signature. Here's how you can stringify the payload and then create the signature in Node.js:
+
+```jsx
+const crypto = require('crypto');
+
+// Function to create signature
+function createSignature(payload, secret) {
+    const payloadString = JSON.stringify(payload); // Stringify the payload
+    const signature = crypto.createHmac('sha256', secret).update(payloadString).digest('hex');
+    return signature;
+}
+
+// Example usage
+const payload = {
+    data: "example_data"
+};
+const secretKey = 'user_provided_secret_key';
+
+const signature = createSignature(payload, secretKey);
+console.log('Signature:', signature);
+
+```
+
+In this example, <Highlight text="payload"/> is a JavaScript object that will be converted to a JSON string using <Highlight text="JSON.stringify()"/> before creating the signature. This ensures that the signature is created based on the serialized representation of the payload. Replace <Highlight text="user_provided_secret_key"/> with the actual secret key provided by the user.
+
+This approach ensures that any modifications to the payload will result in a different signature, providing integrity verification for the webhook payload.
+
+Certainly! Below are similar examples in Python and PHP to stringify the payload and then create the signature:
+
+### Python
+
+```python
+import json
+import hmac
+import hashlib
+
+# Function to create signature
+def create_signature(payload, secret):
+    payload_string = json.dumps(payload) # Stringify the payload
+    signature = hmac.new(secret.encode(), payload_string.encode(), hashlib.sha256).hexdigest()
+    return signature
+
+# Example usage
+payload = {
+    "data": "example_data"
+}
+secret_key = 'user_provided_secret_key'
+
+signature = create_signature(payload, secret_key)
+print('Signature:', signature)
+
+```
+
+### PHP
+
+```php
+<?php
+
+// Function to create signature
+function createSignature($payload, $secret) {
+    $payloadString = json_encode($payload); // Stringify the payload
+    $signature = hash_hmac('sha256', $payloadString, $secret);
+    return $signature;
+}
+
+// Example usage
+$payload = array(
+    "data" => "example_data"
+);
+$secretKey = 'user_provided_secret_key';
+
+$signature = createSignature($payload, $secretKey);
+echo 'Signature: ' . $signature;
+?>
+
+```
+
+In both examples, the payload is serialized to a JSON string using <Highlight text="json.dumps()"/> in Python and <Highlight text="json_encode()"/> in PHP before creating the signature. This ensures that the signature is generated based on the serialized representation of the payload, providing integrity verification for the webhook payload. Replace <Highlight text="user_provided_secret_key"/> with the actual secret key provided by the user.
+
+### Conclusion
+
+By integrating with our webhook system, you can receive real-time notifications about important events within our system, enabling you to automate processes and keep your application in sync. If you encounter any issues or have questions, please reach out to our support team for assistance.

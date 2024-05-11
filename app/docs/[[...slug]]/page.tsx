@@ -7,20 +7,25 @@ import { getMarkdownForSlug } from "@/lib/markdown";
 import { cache } from "react";
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
-
+import ReactMarkdown from 'react-markdown'
 // it is a higher order function which takes a function as an argument and returns a function
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 // its  purpose is to render the page only in case of cashe miss, else server from the cache
 
 // this function generates metadata for the page, i.e the title and description of the page using the params of the url
-export async function generateMetadata({params: { slug = [] },}: {params: { slug: string[] };}) {
+export async function generateMetadata({ params: { slug = [] }, }: { params: { slug: string[] }; }) {
   const pathName = slug.join("/");
-  const res = await cachedGetMarkdownForSlug(pathName);
-  if (!res) return null;
-  const { frontmatter } = res;
+  const data = FLATTEND_ROUTES.find((value) => value.href == pathName);
+
+
+  if (!data) {
+    return null;
+  }
+  // console.log(FLATTEND_ROUTES)
+
   return {
-    title: frontmatter.title,
-    description: frontmatter.description,
+    title: data.title,
+    // description: frontmatter.description,
   };
 }
 
@@ -65,3 +70,4 @@ export default async function DocsPage({params: { slug = [] },}: {params: { slug
     </Theme>
   );
 }
+

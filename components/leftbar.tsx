@@ -28,7 +28,8 @@ export function Leftbar() {
                     const key = `/docs/${href}${subItem.href}`;
                     return (
                       <Anchor
-                        activeClassName="font-medium dark:text-white text-black"
+                        activeClassName="font-medium dark:text-white text-black "
+                        className="pl-5"
                         href={key}
                         key={key}
                         disabled={subItem.disabled}
@@ -48,7 +49,7 @@ export function Leftbar() {
                               href={key}
                               key={key}
                               disabled={subItem.disabled}
-                              className="m-2 ms-8"
+                              className="m-2 ms-8 pl-5"
                               isNested={true}
                               nestedTitle={subSubItem.href}
                             >

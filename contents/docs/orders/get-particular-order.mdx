@@ -1,0 +1,130 @@
+# Get Order with OrderId
+
+## Endpoint:
+
+```
+/api/v1/orders/:orderId
+```
+
+### Description:
+
+This API endpoint retrieves a specific order by its ID. The order is fetched from the database based on the provided ID and user authentication. The endpoint returns the order details in JSON format.
+
+### Method:
+
+<GETBadge/>
+
+### Parameters:
+
+- **Path Parameter:**
+    - <Highlight text="orderId"/> (required): The order ID of the order to retrieve.
+
+### Request Header:
+
+<AccessKeyAndSec/>
+
+### Response:
+
+- **Success Response:**
+    - **Status Code:** 200
+    - **Content Type:** JSON
+    - **Response Body:** An object containing order details.
+- **Error Response:**
+    - **Status Code:** 404 (Not Found) or 500 (Internal Server Error)
+    - **Content Type:** JSON
+    - **Response Body:** An error message explaining the issue encountered.
+
+### Sample Usage:
+
+```json
+// Sample Request Headers
+accessKey: your-access-key
+accessSecret: your-access-secret
+
+// Sample Request
+GET /api/v1/orders/123456
+
+```
+
+```json
+// Sample Response (Success)
+{
+    "createdAt": "2024-04-13T08:00:00Z",
+    "updatedAt": "2024-04-13T08:30:00Z",
+    "events": [...],
+    "customer": {...},
+    "amount": 100,
+    "amountPaid": 50,
+    "amountDue": 50,
+    "orderId": "123456",
+    "type": "paymentpages",
+    "doc": "doc123",
+    "status": "created"
+}
+
+// Sample Response (Error)
+{
+    "status": 404,
+    "message": "Order not found"
+}
+
+```
+
+### Notes:
+
+- This endpoint requires authentication with an access key and access secret provided in the request headers.
+- If the order is not found, a 404 status code is returned with an appropriate error message.
+
+### Status Codes:
+
+- **200:** Successful retrieval of the order.
+- **401:** Unauthorized. Access key or access secret is missing or invalid.
+- **404:** The requested order was not found.
+- **500:** Internal Server Error. An unexpected error occurred during processing.
+
+### Examples:
+
+### CURL Example:
+
+```bash
+curl -X GET \\
+  '<https://api-url/api/v1/orders/123456>' \\
+  -H 'accessKey: your-access-key' \\
+  -H 'accessSecret: your-access-secret'
+
+```
+
+### Python Example (using requests library):
+
+```python
+import requests
+
+url = "<https://<api-url>/api/v1/orders/123456>"
+headers = {
+    "accessKey": "your-access-key",
+    "accessSecret": "your-access-secret"
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
+
+```
+
+### Node.js Example (using axios library):
+
+```jsx
+const axios = require('axios');
+
+const url = '<https://<api-url>/api/v1/orders/123456>';
+const headers = {
+    'accessKey': 'your-access-key',
+    'accessSecret': 'your-access-secret'
+};
+
+axios.get(url, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error.response.data));
+
+```
+
+These examples demonstrate how to make requests to the API endpoint using different programming languages and libraries.
