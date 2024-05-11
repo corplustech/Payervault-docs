@@ -78,8 +78,17 @@
 
 .prose {
   margin: 0 !important;
+  @apply prose-pre:h-fit prose-code:p-2 !important;
 }
-
+pre {
+  padding: 2px !important;
+  max-height: fit-content;
+  height:fit-content !important;
+  width: inherit !important;
+  overflow-x: auto;
+  overflow-y:hidden !important;
+}
+/* 
 pre {
   padding: 0 !important;
   width: inherit !important;
@@ -164,4 +173,4 @@ pre>code {
 
 .highlight-comp>code {
   background-color: transparent !important;
-}
+} */

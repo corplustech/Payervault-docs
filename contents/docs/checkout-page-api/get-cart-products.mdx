@@ -8,17 +8,12 @@ This endpoint allows users to retrieve details of a checkout cart by providing i
 
 ## Endpoint
 ```
-/api/v1/cart/:id
+/api/v1/cart
 ```
 ## Method
 
 <GETBadge/>
 
-
-## Path Parameter:
-
-<BodyParams feild="id" type="string" isRequired={true}/>
-A unique identifier of the checkout cart.
 
 ## Authentication
 
@@ -35,37 +30,42 @@ This endpoint requires authentication using an accessKey and accessSecret. These
   - ***Body:*** JSON object containing details of the checkout cart.
   
     ```json
-    {
-        "_id" : "customerID",
-        "products": [
-            {
-                "productID": "productID",
+        [ {
+            "cartId": "663c66fec3ac7bf550d3f93b",
+            "customerID": "testCustomerID",
+            "product": {
+                "_id": "663c9a4aa93f562f4ddd81d9",
+                "name": "Sample Product",
+                "productID": "product-1",
+                "isLive": true,
+                "description": "This is a sample product description.",
+                "price": 100,
+                "discountedPrice": 80,
+                "isDiscounted": true,
+                "image": {
+                    "url": "https://example.com/sample-image.jpg",
+                    "fileType": "image/jpeg",
+                    "name": "sample-image",
+                    "_id": "663c9a4aa93f562f4ddd81de"
+                },
                 "quantity": 1,
-                "product": {
-                    "name": "Product Name",
-                    "price": 10.99,
-                    "description": "Product Description"
-                    // Additional product details
-                }
+                "discount": 20
             },
-            // Additional products in the cart
-        ],
-        "customer": {
-            "name": "Customer Name",
-            "email": "customer@example.com"
-            // Additional customer details
-        }
-    }
+            "customer": {
+                "name": "John Doe",
+                "email": "john.doe@example.com",
+                "contact": "+1234567890"
+            }
+        }]
     ```
 
 #### Error Response:
-- ***Status Code:*** 404 Not Found
-- ***Body:*** JSON object with an error message indicating that the product was not found.
+  - Status Code: 
+    - 500 Internal Server Error: If an unexpected error occurs.
+  - Body: JSON object with an error message.
   
     ```json
     {
-        "message": "Product not found"
+        "message": "Internal Server Error"
     }
     ```
-
-

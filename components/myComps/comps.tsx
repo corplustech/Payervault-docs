@@ -33,15 +33,15 @@ export function BodyParams({ feild, type, isRequired }: { feild: string, type: s
 
 export function AccessKeyAndSec() {
     return (
-        <Table>
+        <Table className="dark:border-slate-500 dark:border" >
             <TableBody>
                 <TableRow>
-                    <TableHead className="font-bold">accessKey :</TableHead>
-                    <TableCell className="text-green-800">Access key for authentication</TableCell>
+                    <TableHead className="font-bold dark:text-white">accessKey :</TableHead>
+                    <TableCell className=" font-semibold text-xs text-green-600">Access key for authentication</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableHead className="font-bold">accessSecret :  </TableHead>
-                    <TableCell className="text-green-800">Access secret for authentication.</TableCell>
+                    <TableHead className="font-bold dark:text-white">accessSecret :  </TableHead>
+                    <TableCell className="font-semibold text-xs text-green-600">Access secret for authentication.</TableCell>
                 </TableRow>
             </TableBody>
         </Table>

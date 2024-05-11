@@ -30,5 +30,5 @@ export function RequiredBadge(){
 }
 
 export function Highlight({text}:{text:string} ){
-  return <span className="bg-gray-800 text-red-500 px-1">{text}</span>
+  return <span className="bg-gray-800 rounded text-red-500 px-2 leading-none">{text}</span>
 }

@@ -16,7 +16,7 @@ type ROUTES_Type = {
 
 // these routes are controlling the routes in the sidebar and their content as well
 export const ROUTES: ROUTES_Type[] = [
-   // payout api routes 
+  // payout api routes 
   {
     title: "Payout API",
     href: "payout-api",
@@ -30,116 +30,140 @@ export const ROUTES: ROUTES_Type[] = [
         href: "/getting-started",
       },
       {
-        title:"Beneficiary",
+        title: "Beneficiary",
         href: "/beneficiary",
-        items:[
+        items: [
           {
             title: "Add Beneficiary",
             href: "/add",
           },
           {
-            title:"Get Beneficiary Details",
+            title: "Get Beneficiary Details",
             href: "/get-details",
           },
           {
-            title:"Remove Beneficiary",
+            title: "Remove Beneficiary",
             href: "/remove",
           },
           {
-            title:"Get Beneficiary History",
+            title: "Get Beneficiary History",
             href: "/get-history",
           },
           {
-            title:"Get All Beneficiaries",
+            title: "Get All Beneficiaries",
             href: "/get-all",
-          },    
+          },
         ]
       },
       {
-        title:"Account",
+        title: "Account",
         href: "/account",
-        items:[
+        items: [
           {
-            title:"Get Balance",
+            title: "Get Balance",
             href: "/get-balance",
           },
         ]
       },
       {
-        title:"Transfer",
+        title: "Transfer",
         href: "/transfer",
-        items:[
+        items: [
           {
-            title:"Standard Transfer Sync",
+            title: "Standard Transfer Sync",
             href: "/standard-transfer-sync",
-         },
-         {
-           title:"Standard Transfer Async",
-           href: "/standard-transfer-async",
-         },
-         {
-           title:"Direct Transfer",
-           href: "/direct-transfer",
-         },
-         {
-           title:"Get Transfer Status",
-           href: "/get-transfer-status",
-         },
-         {
-           title:"Get all Transfers",
-           href: "/get-all-transfers",
-         },
+          },
+          {
+            title: "Standard Transfer Async",
+            href: "/standard-transfer-async",
+          },
+          {
+            title: "Direct Transfer",
+            href: "/direct-transfer",
+          },
+          {
+            title: "Get Transfer Status",
+            href: "/get-transfer-status",
+          },
+          {
+            title: "Get all Transfers",
+            href: "/get-all-transfers",
+          },
         ]
       },
       {
-        title:"Batch Transfer",
+        title: "Batch Transfer",
         href: "/batch-transfer",
-        items:[
+        items: [
           {
-            title:"Request Batch Transfer",
+            title: "Request Batch Transfer",
             href: "/request-batch-transfer",
           },
           {
-            title:"Get Batch Transfer Status",
+            title: "Get Batch Transfer Status",
             href: "/get-batch-transfer-status",
           },
           {
-            title:"Get All Batch Transfers",
+            title: "Get All Batch Transfers",
             href: "/get-all-batch-transfers",
           },
         ]
       },
       {
-        title:"Payout Pricing",
+        title: "Payout Pricing",
         href: "/payout-pricing",
+      }
+    ]
+  },
+  {
+    title: "Orders API",
+    href: "orders",
+    items: [
+      {
+        title: "Fetch Orders",
+        href: "/get-orders",
+      },
+
+      {
+        title: "Get Particular Order",
+        href: "/get-particular-order",
+      },
+      {
+        title: "Webhook",
+        href: "/webhook"
       }
     ]
   },
   // checkout page api
   {
-    title:"Checkout Page API",
-    href:"checkout-page-api",
-    items:[
+    title: "Checkout Page API",
+    href: "checkout-page-api",
+    items: [
       {
-        title:"Save and Update Products",
-        href:"/save-and-update-products",
+        title: "Save and Update Products",
+        href: "/save-and-update-products",
       },
       {
-        title:"Get Checkout Link",
-        href:"/get-checkout-link",
+        title: "Get Checkout Link",
+        href: "/get-checkout-link",
       },
       {
-        title:"Delete Product in User Cart",
-        href:"/delete-product-in-user-cart",
+        title: "Remove Products from Customer Cart",
+        href: "/remove-products-from-customer-cart",
       },
       {
-        title:"Get Cart Products",
-        href:"/get-cart-products",
+        title: "Clear customer's cart",
+        href: "/clear-cart",
       },
       {
-        title:"Clear cart",
-        href:"/clear-cart",
+        title: "Get All Carts with Products",
+        href: "/get-cart-products",
+      },
+      {
+        title: "Get Cart Products with Cart ID",
+        href: "/get-cart-products-with-cart-id",
       }
+
     ]
   },
 ];
@@ -153,7 +177,7 @@ export const FLATTEND_ROUTES = ROUTES.map(({ href, items }) => {
     // returns an arrray of obeects [{},{},{}]
 
     // if items contain a sub item then href will be combined with the sub item href
-    if(!link.items){
+    if (!link.items) {
       // if does not contain sub item then return the object with its detaiis as it is a clickable link
       return {
         title: link.title,
@@ -161,8 +185,8 @@ export const FLATTEND_ROUTES = ROUTES.map(({ href, items }) => {
         disabled: link.disabled,
       };
     }
-    else{
-      const arrayOFSubLinkOBjs =  link.items.map((subLink) => {
+    else {
+      const arrayOFSubLinkOBjs = link.items.map((subLink) => {
         return {
           title: subLink.title,
           href: href + link.href + subLink.href,
