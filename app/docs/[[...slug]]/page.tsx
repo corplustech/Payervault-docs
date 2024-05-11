@@ -7,6 +7,7 @@ import { getMarkdownForSlug } from "@/lib/markdown";
 import { cache } from "react";
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
+import HighlightCode from "./HighlightCode";
 // it is a higher order function which takes a function as an argument and returns a function
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 // its  purpose is to render the page only in case of cashe miss, else server from the cache
@@ -53,6 +54,7 @@ export default async function DocsPage({params: { slug = [] },}: {params: { slug
     <div className="flex items-start gap-12 ">
       <div className="flex-[3] py-10 ps-4">
         <DocsBreadcrumb paths={slug} />
+        <HighlightCode />
         <div className="prose prose-zinc dark:prose-invert prose-code:font-code prose-code:bg-zinc-900 prose-pre:bg-zinc-900 prose-headings:scroll-m-20 w-[85vw] sm:w-full sm:mx-auto">
           <h1 className="break-all">{res.frontmatter.title}</h1>
           <p className="-mt-5 text-muted-foreground text-lg mb-2">
