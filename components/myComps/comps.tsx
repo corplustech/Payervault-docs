@@ -8,14 +8,14 @@ import "./dialogStyle.css"
 
 export function IdAndSecTable() {
     return (
-        <Table>
+        <Table className="dark:border-slate-500 dark:border">
             <TableBody>
                 <TableRow>
-                    <TableHead className="font-bold">X-Client-Id :</TableHead>
+                    <TableHead className="font-bold dark:text-white">X-Client-Id :</TableHead>
                     <TableCell className="text-green-800">YOUR_CLIENT_ID</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableHead className="font-bold">X-Client-Secret :  </TableHead>
+                    <TableHead className="font-bold dark:text-white">X-Client-Secret :  </TableHead>
                     <TableCell className="text-green-800">YOUR_CLIENT_SECRET</TableCell>
                 </TableRow>
             </TableBody>
