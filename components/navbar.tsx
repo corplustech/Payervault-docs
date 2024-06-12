@@ -38,7 +38,7 @@ export function Navbar() {
             <Search />
             <div className="flex -space-x-1.5">
               <Link
-                href="https://paymentgateway.payervault.com/sign-up"
+                href="https://merchant.payervault.com/sign-up"
                 className="pt-2 mx-2" 
               >
                 Create Account
