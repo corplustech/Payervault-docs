@@ -166,6 +166,19 @@ export const ROUTES: ROUTES_Type[] = [
 
     ]
   },
+  {
+    title:"Integration", 
+    href:"integration", 
+    items:[
+      { title:"Get Checkout Integration Link", 
+        href:"/get-checkout-integration-link",
+      },
+      {
+        title:"Checkout Integration Example", 
+        href:"/checkout-integration-example",
+      }
+    ]
+  }
 ];
 
 

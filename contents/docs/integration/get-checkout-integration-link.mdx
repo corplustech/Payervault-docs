@@ -3,7 +3,7 @@
 ## Endpoint:
 
 ```text
-https://merchant.payervault.com/api/v1/checkout-link/:customer_id
+https://merchant.payervault.com/api/v1/integration-link/:customer_id
 ```
 ## Method:
 
@@ -46,11 +46,11 @@ accessKey: your-access-key
 accessSecret: your-access-secret
 
 // Sample Request
-GET /api/v1/checkout-link/customer-id-123
+GET /api/v1/integration-link/customer-id-123
 
 // Sample Response (Success)
 {
-  "url": "<https://<url>/checkout/customer-id-123>"
+  "url": "<https://<url>/integration/checkout/34lskdfjlkasd34343"
 }
 
 // Sample Response (Error)
@@ -66,7 +66,7 @@ GET /api/v1/checkout-link/customer-id-123
 - The cart details are fetched based on the user's ID, live status, and the provided customer ID.
 - If the cart contains products, the URL for the checkout page is returned.
 
-Here are examples of how you can make requests to the '/api/v1/checkout-link/(customer_id)' endpoint using different programming languages:
+Here are examples of how you can make requests to the '/api/v1/integration-link/(customer_id)' endpoint using different programming languages:
 
 ## cURL (Command Line)
 
@@ -74,14 +74,14 @@ Here are examples of how you can make requests to the '/api/v1/checkout-link/(cu
 curl -X GET \\
   -H "accessKey: your-access-key" \\
   -H "accessSecret: your-access-secret" \\
-  <https://merchant.payervault.com/api/v1/checkout-link/customer-id-123>
+  <https://merchant.payervault.com/api/v1/integration-link/customer-id-123>
 
 ```
 
 ## JavaScript (Using fetch)
 
 ```jsx
-fetch('<https://merchant.payervault.com/api/v1/checkout-link/customer-id-123>', {
+fetch('<https://merchant.payervault.com/api/v1/integration-link/customer-id-123>', {
   method: 'GET',
   headers: {
     'accessKey': 'your-access-key',
@@ -99,7 +99,7 @@ fetch('<https://merchant.payervault.com/api/v1/checkout-link/customer-id-123>', 
 ```python
 import requests
 
-url = '<https://merchant.payervault.com/api/v1/checkout-link/customer-id-123>'
+url = '<https://merchant.payervault.com/api/v1/integration-link/customer-id-123>'
 headers = {
     'accessKey': 'your-access-key',
     'accessSecret': 'your-access-secret'
@@ -116,7 +116,7 @@ print(data)
 ```js
 const axios = require('axios');
 
-const url = '<https://merchant.payervault.com/api/v1/checkout-link/customer-id-123>';
+const url = '<https://merchant.payervault.com/api/v1/integration-link/customer-id-123>';
 const headers = {
   'accessKey': 'your-access-key',
   'accessSecret': 'your-access-secret'
@@ -128,4 +128,4 @@ axios.get(url, { headers })
 
 ```
 
-These examples demonstrate how to make a <GETBadge/> request to the <Highlight text="/api/v1/checkout-link/(customer_id)"/> endpoint in various languages, passing the required 'accessKey' and 'accessSecret' headers for authentication.
+These examples demonstrate how to make a <GETBadge/> request to the <Highlight text="/api/v1/integration-link/(customer_id)"/> endpoint in various languages, passing the required 'accessKey' and 'accessSecret' headers for authentication.
