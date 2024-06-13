@@ -1,0 +1,115 @@
+# Integrating Checkout in Your Site
+
+## Prerequisites
+Understanding the  API: Before integrating the checkout popup, ensure you are familiar with the [checkout-integration-link](/docs/integration/get-checkout-integration-link) API. This API retrieves the URL for the checkout page associated with a specific customer's cart. Refer to the API documentation for detailed information on its usage and requirements.
+
+
+## HTML Structure
+
+Create the HTML structure for your page, including a button to trigger the checkout popup and a form element to host the checkout script.
+
+```html
+<html>
+<style>
+    button {
+        background: indianred;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 1.2rem;
+        padding: 4px 8px;
+    }
+</style>
+
+<body>
+    <h1>This is my first webpage</h1>
+    <button onclick="openPayment()">Pay Now</button>
+
+    <form id="payervault-form">
+        <script src="http://merchant.payervault.com/integration/integration-script.js"></script>
+    </form>
+</body>
+
+<script>
+  
+    async function openPayment() {
+        const payervault = new window.PayerVault({
+            src: "<url-here>",
+            onSuccess: () => {
+                // Do Something
+            },
+            onCancel: () => {
+                // Do something
+            }
+        });
+        payervault.makePayment();
+    }
+</script>
+</html>
+```
+
+### Step-by-Step Integration
+
+1. **HTML Setup**:
+   - Add a button to trigger the payment popup.
+   - Include a form element to host the PayerVault checkout script.
+
+```html
+<h1>This is my first webpage</h1>
+<button onclick="openPayment()">Pay Now</button>
+<form id="payervault-form">
+    <script src="http://merchant.payervault.com/integration/integration-script.js"></script>
+</form>
+```
+
+
+2. **JavaScript Functions**:
+   - Add the JavaScript to fetch the checkout URL and open the payment popup.
+
+```javascript
+       async function openPayment() {
+           const payervault = new window.PayerVault({
+               src:”<url-here>”,
+               onSuccess: () => {
+                   // Do Something
+               },
+               onCancel: () => {
+                   // Do something
+               }
+           });
+           payervault.makePayment();
+       }
+   </script>
+   ```
+
+### Detailed Explanation
+
+- **openPayment()**: This function triggers the payment popup by calling api and getting integration link and initializing the PayerVault payment popup if a valid URL is returned.
+
+  ```javascript
+  async function openPayment() {
+      let url="";
+      // fetch and update the url with integration link
+      if (!url) {
+          return;
+      }
+      const payervault = new window.PayerVault({
+          src: url,
+          onSuccess: () => {
+              // Do Something
+          },
+          onCancel: () => {
+              // Do something
+          }
+      });
+      payervault.makePayment();
+  }
+  ```
+
+### Additional Notes
+
+- Customize the **onSuccess** and **onCancel** functions within the **openPayment()** function to handle the post-payment actions as needed.
+- Ensure the **integration-script.js** is correctly added inside your code.
+
+By following this documentation, you will be able to integrate the checkout popup functionality into your webpage efficiently.
