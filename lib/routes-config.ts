@@ -16,6 +16,57 @@ type ROUTES_Type = {
 
 // these routes are controlling the routes in the sidebar and their content as well
 export const ROUTES: ROUTES_Type[] = [
+  {
+    title: "Orders API",
+    href: "orders",
+    items: [
+      {
+        title: "Fetch Orders",
+        href: "/get-orders",
+      },
+
+      {
+        title: "Get Particular Order",
+        href: "/get-particular-order",
+      },
+      {
+        title: "Webhook",
+        href: "/webhook"
+      }
+    ]
+  },
+  // checkout page api
+  {
+    title: "Checkout Page API",
+    href: "checkout-page-api",
+    items: [
+      {
+        title: "Save and Update Products",
+        href: "/save-and-update-products",
+      },
+      {
+        title: "Get Checkout Link",
+        href: "/get-checkout-link",
+      },
+      {
+        title: "Remove Products from Customer Cart",
+        href: "/remove-products-from-customer-cart",
+      },
+      {
+        title: "Clear customer's cart",
+        href: "/clear-cart",
+      },
+      {
+        title: "Get All Carts with Products",
+        href: "/get-cart-products",
+      },
+      {
+        title: "Get Cart Products with Cart ID",
+        href: "/get-cart-products-with-cart-id",
+      }
+
+    ]
+  },
   // payout api routes 
   {
     title: "Payout API",
@@ -113,57 +164,6 @@ export const ROUTES: ROUTES_Type[] = [
         title: "Payout Pricing",
         href: "/payout-pricing",
       }
-    ]
-  },
-  {
-    title: "Orders API",
-    href: "orders",
-    items: [
-      {
-        title: "Fetch Orders",
-        href: "/get-orders",
-      },
-
-      {
-        title: "Get Particular Order",
-        href: "/get-particular-order",
-      },
-      {
-        title: "Webhook",
-        href: "/webhook"
-      }
-    ]
-  },
-  // checkout page api
-  {
-    title: "Checkout Page API",
-    href: "checkout-page-api",
-    items: [
-      {
-        title: "Save and Update Products",
-        href: "/save-and-update-products",
-      },
-      {
-        title: "Get Checkout Link",
-        href: "/get-checkout-link",
-      },
-      {
-        title: "Remove Products from Customer Cart",
-        href: "/remove-products-from-customer-cart",
-      },
-      {
-        title: "Clear customer's cart",
-        href: "/clear-cart",
-      },
-      {
-        title: "Get All Carts with Products",
-        href: "/get-cart-products",
-      },
-      {
-        title: "Get Cart Products with Cart ID",
-        href: "/get-cart-products-with-cart-id",
-      }
-
     ]
   },
 ];
