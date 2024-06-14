@@ -67,6 +67,20 @@ export const ROUTES: ROUTES_Type[] = [
 
     ]
   },
+  // integration routes
+  {
+    title:"Integration", 
+    href:"integration", 
+    items:[
+      { title:"Get Checkout Integration Link", 
+        href:"/get-checkout-integration-link",
+      },
+      {
+        title:"Checkout Integration Example", 
+        href:"/checkout-integration-example",
+      }
+    ]
+  },
   // payout api routes 
   {
     title: "Payout API",
