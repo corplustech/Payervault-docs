@@ -82,104 +82,104 @@ export const ROUTES: ROUTES_Type[] = [
     ]
   },
   // payout api routes 
-  // {
-  //   title: "Payout API",
-  //   href: "payout-api",
-  //   items: [
-  //     {
-  //       title: "Introduction",
-  //       href: "/introduction",
-  //     },
-  //     {
-  //       title: "Getting Started",
-  //       href: "/getting-started",
-  //     },
-  //     {
-  //       title: "Beneficiary",
-  //       href: "/beneficiary",
-  //       items: [
-  //         {
-  //           title: "Add Beneficiary",
-  //           href: "/add",
-  //         },
-  //         {
-  //           title: "Get Beneficiary Details",
-  //           href: "/get-details",
-  //         },
-  //         {
-  //           title: "Remove Beneficiary",
-  //           href: "/remove",
-  //         },
-  //         {
-  //           title: "Get Beneficiary History",
-  //           href: "/get-history",
-  //         },
-  //         {
-  //           title: "Get All Beneficiaries",
-  //           href: "/get-all",
-  //         },
-  //       ]
-  //     },
-  //     {
-  //       title: "Account",
-  //       href: "/account",
-  //       items: [
-  //         {
-  //           title: "Get Balance",
-  //           href: "/get-balance",
-  //         },
-  //       ]
-  //     },
-  //     {
-  //       title: "Transfer",
-  //       href: "/transfer",
-  //       items: [
-  //         {
-  //           title: "Standard Transfer Sync",
-  //           href: "/standard-transfer-sync",
-  //         },
-  //         {
-  //           title: "Standard Transfer Async",
-  //           href: "/standard-transfer-async",
-  //         },
-  //         {
-  //           title: "Direct Transfer",
-  //           href: "/direct-transfer",
-  //         },
-  //         {
-  //           title: "Get Transfer Status",
-  //           href: "/get-transfer-status",
-  //         },
-  //         {
-  //           title: "Get all Transfers",
-  //           href: "/get-all-transfers",
-  //         },
-  //       ]
-  //     },
-  //     {
-  //       title: "Batch Transfer",
-  //       href: "/batch-transfer",
-  //       items: [
-  //         {
-  //           title: "Request Batch Transfer",
-  //           href: "/request-batch-transfer",
-  //         },
-  //         {
-  //           title: "Get Batch Transfer Status",
-  //           href: "/get-batch-transfer-status",
-  //         },
-  //         {
-  //           title: "Get All Batch Transfers",
-  //           href: "/get-all-batch-transfers",
-  //         },
-  //       ]
-  //     },
-  //     {
-  //       title: "Payout Pricing",
-  //       href: "/payout-pricing",
-  //     }
-  //   ]
-  // },
+  {
+    title: "Payout API",
+    href: "payout-api",
+    items: [
+      {
+        title: "Introduction",
+        href: "/introduction",
+      },
+      {
+        title: "Getting Started",
+        href: "/getting-started",
+      },
+      {
+        title: "Beneficiary",
+        href: "/beneficiary",
+        items: [
+          {
+            title: "Add Beneficiary",
+            href: "/add",
+          },
+          {
+            title: "Get Beneficiary Details",
+            href: "/get-details",
+          },
+          {
+            title: "Remove Beneficiary",
+            href: "/remove",
+          },
+          {
+            title: "Get Beneficiary History",
+            href: "/get-history",
+          },
+          {
+            title: "Get All Beneficiaries",
+            href: "/get-all",
+          },
+        ]
+      },
+      {
+        title: "Account",
+        href: "/account",
+        items: [
+          {
+            title: "Get Balance",
+            href: "/get-balance",
+          },
+        ]
+      },
+      {
+        title: "Transfer",
+        href: "/transfer",
+        items: [
+          {
+            title: "Standard Transfer Sync",
+            href: "/standard-transfer-sync",
+          },
+          {
+            title: "Standard Transfer Async",
+            href: "/standard-transfer-async",
+          },
+          {
+            title: "Direct Transfer",
+            href: "/direct-transfer",
+          },
+          {
+            title: "Get Transfer Status",
+            href: "/get-transfer-status",
+          },
+          {
+            title: "Get all Transfers",
+            href: "/get-all-transfers",
+          },
+        ]
+      },
+      {
+        title: "Batch Transfer",
+        href: "/batch-transfer",
+        items: [
+          {
+            title: "Request Batch Transfer",
+            href: "/request-batch-transfer",
+          },
+          {
+            title: "Get Batch Transfer Status",
+            href: "/get-batch-transfer-status",
+          },
+          {
+            title: "Get All Batch Transfers",
+            href: "/get-all-batch-transfers",
+          },
+        ]
+      },
+      {
+        title: "Payout Pricing",
+        href: "/payout-pricing",
+      }
+    ]
+  },
 ];
 
 
