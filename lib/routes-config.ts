@@ -1,18 +1,16 @@
 // remove disabled
 
 type Item_Type = {
-  title: string,
-  href: string,
-  disabled?: boolean
-  items?: Array<Item_Type>
-}
+  title: string;
+  href: string;
+  disabled?: boolean;
+  items?: Array<Item_Type>;
+};
 type ROUTES_Type = {
-  title: string,
-  href: string,
-  items: Array<Item_Type>
-}
-
-
+  title: string;
+  href: string;
+  items: Array<Item_Type>;
+};
 
 // these routes are controlling the routes in the sidebar and their content as well
 export const ROUTES: ROUTES_Type[] = [
@@ -29,11 +27,11 @@ export const ROUTES: ROUTES_Type[] = [
         title: "Get Particular Order",
         href: "/get-particular-order",
       },
-      {
-        title: "Webhook",
-        href: "/webhook"
-      }
-    ]
+      // {
+      //   title: "Webhook",
+      //   href: "/webhook"
+      // }
+    ],
   },
   // checkout page api
   {
@@ -63,25 +61,25 @@ export const ROUTES: ROUTES_Type[] = [
       {
         title: "Get Cart Products with Cart ID",
         href: "/get-cart-products-with-cart-id",
-      }
-
-    ]
+      },
+    ],
   },
   // integration routes
   {
-    title:"Integration", 
-    href:"integration", 
-    items:[
-      { title:"Get Checkout Integration Link", 
-        href:"/get-checkout-integration-link",
+    title: "Integration",
+    href: "integration",
+    items: [
+      {
+        title: "Get Checkout Integration Link",
+        href: "/get-checkout-integration-link",
       },
       {
-        title:"Checkout Integration Example", 
-        href:"/checkout-integration-example",
-      }
-    ]
+        title: "Checkout Integration Example",
+        href: "/checkout-integration-example",
+      },
+    ],
   },
-  // payout api routes 
+  // payout api routes
   {
     title: "Payout API",
     href: "payout-api",
@@ -118,7 +116,7 @@ export const ROUTES: ROUTES_Type[] = [
             title: "Get All Beneficiaries",
             href: "/get-all",
           },
-        ]
+        ],
       },
       {
         title: "Account",
@@ -128,7 +126,7 @@ export const ROUTES: ROUTES_Type[] = [
             title: "Get Balance",
             href: "/get-balance",
           },
-        ]
+        ],
       },
       {
         title: "Transfer",
@@ -154,7 +152,7 @@ export const ROUTES: ROUTES_Type[] = [
             title: "Get all Transfers",
             href: "/get-all-transfers",
           },
-        ]
+        ],
       },
       {
         title: "Batch Transfer",
@@ -172,16 +170,15 @@ export const ROUTES: ROUTES_Type[] = [
             title: "Get All Batch Transfers",
             href: "/get-all-batch-transfers",
           },
-        ]
+        ],
       },
       {
         title: "Payout Pricing",
         href: "/payout-pricing",
-      }
-    ]
+      },
+    ],
   },
 ];
-
 
 // this fuction is combining the routes and their sub routes into a single array
 // example href: "getting-started" and href: "/introduction" will be combined into href: "getting-started/introduction"
@@ -198,8 +195,7 @@ export const FLATTEND_ROUTES = ROUTES.map(({ href, items }) => {
         href: href + link.href,
         disabled: link.disabled,
       };
-    }
-    else {
+    } else {
       const arrayOFSubLinkOBjs = link.items.map((subLink) => {
         return {
           title: subLink.title,
